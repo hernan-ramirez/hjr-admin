@@ -1,0 +1,54 @@
+<!--{ strip }-->
+<html>
+<head>
+<title>Jobs</title>
+<link type="text/css" rel="stylesheet" href="../REPOSITORY/WebTabs.class/webtabs.css">
+<link type="text/css" rel="stylesheet" href="Look/general.css">
+<script type="text/javascript" src="../REPOSITORY/WebTabs.class/webtabs.js"></script>
+<script language=javascript>
+function f_start() {
+
+	var w = document.body.clientWidth-20;
+	var h = document.body.clientHeight-30;
+	if(w <= 50){ w = 50;}
+	if(h <= 50){ h = 50;}
+
+	var Widget = new WebTabs_widget(w, h, 5, 15, "absolute");
+	Widget.add(new WebTabs_tab("<!--{ $lang.tabsJob.list }-->", "page_1", "../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.showtableborders.gif"));
+	Widget.add(new WebTabs_tab("<!--{ $lang.tabsJob.search }-->", "page_2", "../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.find.gif"));
+	document.getElementById("TabsJobs_container").innerHTML = Widget;
+	Widget.f_init_tabs();
+}
+</script>
+</head>
+<body onResize="javascript:location.reload();">
+
+<!-- use a fullscreen table to position the widget center-screen -->
+<table class="degrade">
+	<tr>
+	  <td>
+		<!-- use a dummy div emulate content; required for mozilla to space column correctly -->
+		<div style="width: 1px; height: 1px;"></div>
+	  </td>
+	  <!-- respecify the width of the widget here to size the center column, as used in the widget declaration -->
+	  <td>
+		<div id=TabsJobs_container></div>
+	  </td>
+	  <td>
+		<!-- use a dummy div emulate content; required for mozilla to space column correctly -->
+		<div style="width: 1px; height: 1px;"></div>
+	  </td>
+	</tr>
+</table>
+
+<div id=page_1  class="WebTabs-external-page-container">
+	<iframe scrolling="no" name="listado" src="list.htm?q=<!--{ $smarty.get.q }-->" style="border:0; width:100%; height:100%" frameborder="0"> </iframe>
+</div>
+
+<div id=page_2  class="WebTabs-external-page-container">
+	<iframe scrolling="no" name="formularioBuscar" src="form.htm?q=<!--{ $smarty.get.q }-->" style="border:0; width:100%; height:100%" frameborder="0"> </iframe>
+</div>
+<SCRIPT>f_start();</SCRIPT>
+</body>
+</html>
+<!--{ /strip }-->

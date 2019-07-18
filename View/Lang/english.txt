@@ -1,0 +1,58 @@
+;
+; Change here any visual messages.
+; Call values from Smarty, example: <!--{ $lang.tabsJob.list }-->
+;
+
+
+[tabsJob]
+list = List
+search = Search and order
+new = New
+edit = Edit
+rel = Relations
+public = Public
+
+
+[tabsMenu]
+admin = Admin
+site = Portal
+;
+refresh = Refresh
+home = Home
+fontSize = Font size
+user = Actual user:
+exit = Exit
+scaleMenu = "Rescale or hidden menu (Drag or double click)"
+;
+
+
+[list]
+new = New job
+open = Open for edit. Remember, before select a row
+delete = Delete selected jobs
+confirmDel = You are deleting @@@ register/s for ever.\nAre you sure you want this?
+update = Update checked
+export = Export to file
+noRows = There is not jobs to display
+rowsForPage = Jobs for page
+next = Next page
+previous = Previous page
+setRange = Set range
+
+
+[form]
+search = Search
+back = Back to the list
+save = Save
+zoom = Zoom to large text
+multiple = Display multiple lines
+select = Select from jobs details
+new = New job
+compact = Compact to line
+erase = Erase field
+eraseForm = Erase form
+error = There is an error in this enter
+delField = Delete field's content
+
+[tree]
+title = Table of content

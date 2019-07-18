@@ -1,0 +1,136 @@
+============================================================
+WebTabs Trial Edition
+LICENCE AGREEMENT
+Revision 2004/01/17-01
+
+(C) 2004 Phyrix Systems (Pty) Ltd
+http://www.phyrix.com
+============================================================
+
+
+DEFINITIONS
+
+"Licence" refers to this agreement.
+
+"Product" refers to the complete source code of the WebTabs
+Trial Edition distribution.
+
+"Product Software Package" refers to the .ZIP archive file
+that contains Product.
+
+"Company" refers to Phyrix Systems (Pty) Ltd, as
+manufacturer of Product.
+
+"You" refers to yourself or your company, whichever entity
+purchased Product. Any individuals in your employ who make
+use of Product, as well as any sub-contractors hired by you
+who have access to Product.
+
+"Third Party Software That Uses The Product" is any software
+that makes use of Product.
+
+"Trial Period" refers to a 14 day time period following the
+date when you first received Product Software Package.
+
+"Purpose" of Product covered under this Licence is to
+function as a DHTML Application Layer to HTML, XHTML and XML
+based applications.
+
+"Networked Use" refers to use of Product in a way that
+causes it to be accessible over a network; e.g. hosted on a
+web site.
+
+"Non-networked Use" refers to use of Product in a way that
+causes it not to be accessible over a network; e.g. hosted
+on a computer's hard drive or CD-ROM drive for local
+stand-alone system use.
+
+
+TERMS AND CONDITIONS
+
+1. You may freely copy and distribute verbatim copies of
+Product Software Package as you received it, via network and
+via physical distribution media (such as CD-ROM).
+
+2. In the case of Networked Use, you may integrate Product
+into your own web pages. In the case of Non-networked Use,
+you may integrate Product into your own Third Party Software
+That Uses The Product. Such integration does not give you
+ownership of Product.
+
+3. You may use Product for either Networked Use or
+Non-networked Use, but not both.
+
+4. Product is to be used solely for Purpose as defined
+above. In addition, you may only use Product for evaluation
+testing purposes, for the duration of the Trial Period.
+Continued usage of Product after the Trial Period is not
+permitted. Use of Product in a live production environment
+is forbidden.
+
+5. In the case of Networked Use, you may make use of Product
+on one web site domain only.
+
+6. You may not distribute Third Party Software That Uses
+The Product on distribution media (such as CD-ROM).
+
+7. You may not modify any portion of Product and/or Product
+Software Package.
+
+8. Regarding Networked Use, sub-domains will be regarded as
+domains.
+
+9. All copyright notices within Product source files must be
+left intact.
+
+10. You may not produce spin-offs or a public work based on
+Product's source code, and make it available as such.
+
+11. You may not copy, modify, sublicense, link with, or
+distribute Product except as expressly provided under this
+Licence. Any attempt otherwise to copy, modify, sublicense,
+link with, or distribute Product is void, and will
+automatically terminate your rights under this Licence.
+You may not decompile, disassemble, reverse engineer, or
+otherwise attempt to derive the source code for Product.
+
+12. You are not required to accept this Licence, since you
+have not signed it. However, nothing else grants you
+permission to modify or distribute Product or its derivative
+works. These actions are prohibited by law if you do not
+accept this Licence. Therefore, by modifying or distributing
+Product (or any work based on Product), you indicate your
+acceptance of this Licence to do so, and all its terms and
+conditions for copying, distributing or modifying Product or
+works based on it.
+
+13. Any use of Product not explicitly permitted in this
+agreement is denied, therefore uses not explicity forbidden
+are not implicitly allowed.
+
+14. PROPRIETARY RIGHTS. Title, ownership rights, and
+intellectual property rights in Product shall remain in
+Company and/or its suppliers. You acknowledges such
+ownership and intellectual property rights and will not take
+any action to jeopardize, limit or interfere in any manner
+with Company's or its suppliers' ownership of or rights with
+respect to Product. Product is protected by copyright and
+other intellectual property laws and by international
+treaties. Title and related rights in the content accessed
+through Product is the property of the applicable content
+owner and is protected by applicable law. The License
+granted under this agreement gives you no rights to such
+content. 
+
+15. NO WARRANTY. THERE IS NO WARRANTY FOR THE PRODUCT, TO
+THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN
+OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR
+OTHER PARTIES PROVIDE THE PRODUCT "AS IS" WITHOUT WARRANTY
+OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE
+QUALITY AND PERFORMANCE OF THE PRODUCT IS WITH YOU. SHOULD
+THE PRODUCT PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL
+NECESSARY SERVICING, REPAIR OR CORRECTION.
+
+============================================================

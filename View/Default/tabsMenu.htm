@@ -1,0 +1,106 @@
+<!--{ strip }-->
+<html>
+<head>
+<title>tabsMenu</title>
+<link type="text/css" rel="stylesheet" href="../REPOSITORY/WebTabs.class/webtabs.css">
+<link type="text/css" rel="stylesheet" href="Look/general.css">
+<script type="text/javascript" src="../REPOSITORY/WebTabs.class/webtabs.js"></script>
+<script language=javascript>
+function f_start(w) {
+
+	var w = document.body.clientWidth-50;
+	var h = document.body.clientHeight-30;
+	if(w <= 50){ w = 50;}
+	if(h <= 50){ h = 50;}
+
+	var Widget = new WebTabs_widget(w, h, 35, 15, "absolute");
+	Widget.add(new WebTabs_tab("<!--{ $lang.tabsMenu.admin }-->", "page_1", "../REPOSITORY/WebTabs.class/about.gif"));
+	Widget.add(new WebTabs_tab("<!--{ $lang.tabsMenu.site }-->", "page_2", "../REPOSITORY/FCKeditor.class/editor/filemanager/browser/default/images/icons/htm.gif"));
+	
+	document.getElementById("WebTabs_container").innerHTML = Widget;
+	Widget.f_init_tabs();
+}
+
+function reSize(){
+	var anchos = parent.document.getElementById('principal').cols;
+	if(anchos == '30,*'){
+		parent.document.getElementById('principal').cols = '35%,*';
+	}else{
+		parent.document.getElementById('principal').cols = '30,*';
+	}
+}
+</script>
+</head>
+<body onResize="javascript:location.reload();"">
+<table border="0" cellpadding="0" cellspacing="0" class="degrade">
+	<tr>
+	  <td width="7" align="right" valign="middle">
+		<img src="../REPOSITORY/FCKeditor.class/editor/skins/silver/images/toolbar.start.gif" width="7" height="21" title="<!--{ $lang.tabsMenu.scaleMenu }-->" onDblClick="reSize();">
+	  </td>
+	  <td width="25" valign="top"><p>&nbsp;</p><p>&nbsp;</p>
+		<a href="blank.htm" target="Jobs"><img src="../REPOSITORY/WebTabs.class/home.gif" width="16" height="16" vspace="5" border="0" title="<!--{ $lang.tabsMenu.home }-->"></a><br>
+		<img src="../REPOSITORY/WebTabs.class/forum.gif" width="16" height="16" title="<!--{ $lang.tabsMenu.user }-->" vspace="5" border="0"><br>
+		<img src="../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.undo.gif" width="21" height="20" title="<!--{ $lang.tabsMenu.exit }-->" vspace="5" border="0"> 
+	  </td>
+	  <td valign="bottom" nowrap>
+		<div id=WebTabs_container></div>
+		<span style="font-size:9px">Power By HJR</span>
+	  </td>
+	  <td width="7" align="right" valign="middle">
+		<img src="../REPOSITORY/FCKeditor.class/editor/skins/silver/images/toolbar.start.gif" width="7" height="21" title="<!--{ $lang.tabsMenu.scaleMenu }-->" onDblClick="reSize();">
+	  </td>
+	</tr>
+</table>
+	
+<div id=page_1 class="WebTabs-external-page-container">
+<table class="interna" cellspacing="0">
+<tr>
+  <td nowrap class="barral"><span class="titulo">&nbsp;ADMIN</span></td>
+</tr>
+<tr>
+<tr height="100%"><td>
+<iframe scrolling="auto" src="treeAdmin.htm" style="border:0; width:100%; height:100%" frameborder="0"> </iframe>
+</td></tr>
+<tr height="24">
+  <td align="right" nowrap class="barralInferior">
+  <img src="../REPOSITORY/FCKeditor.class/editor/dialog/images/reset.gif" width="12" height="12" title="<!--{ $lang.tabsMenu.refresh }-->">
+</td>
+</tr>
+</table>
+</div>
+
+<div id=page_2 class="WebTabs-external-page-container">
+<table class="interna" cellspacing="0">
+<tr>
+  <td nowrap class="barral"><span class="titulo">&nbsp;PORTAL</span></td>
+</tr>
+<tr>
+<tr height="100%"><td>
+<iframe scrolling="auto" src="treePortal.htm" style="border:0; width:100%; height:100%" frameborder="0"> </iframe>
+</td></tr>
+<tr height="24">
+	<td align="right" nowrap class="barralInferior">
+	<img src="../REPOSITORY/FCKeditor.class/editor/dialog/images/reset.gif" width="12" height="12" title="Refrescar">
+	</td>
+</tr>
+</table>
+</div>
+
+<script>f_start()</script>
+<!--
+<div id="menumac" style="position:absolute; left:1px; top:85%; width:369px; height:29px;">
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"
+ width="382" height="55" id="dock" align="">
+ <param name=movie value="../REPOSITORY/menuMac/dock.swf"> 
+ <param name=quality value=high> 
+ <param name=wmode value=transparent> 
+ <param name=bgcolor value=#FFFFFF> 
+ <embed src="../REPOSITORY/menuMac/dock.swf" quality=high wmode=transparent bgcolor=#FFFFFF  width="382" height="55" name="dock" align=""
+ type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>
+</object>
+</div>
+-->
+</body>
+</html>
+<!--{ /strip }-->

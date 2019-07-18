@@ -1,0 +1,68 @@
+/* Genaral */
+del {
+	text-decoration: none;
+}
+div {
+	border:2px solid red;
+}
+ul, li {
+	border:2px solid green;
+}
+#formulario	{
+	height: 100%;
+}
+
+
+/* MenuPrincipal */
+#nombreTabla {
+	position:absolute;
+	top: 5px;
+	left: 5px;
+	border:none;
+}
+#mensajesGenerales {
+	float:left;
+}
+#errores {
+}
+
+#botonesPrincipales, #botonesAuxiliares {
+	position:relative;
+	bottom: 5px;
+	right: 5px;
+	
+	text-indent:-5000px; /* Hago desaparecer el texto */
+	border:none;
+	list-style:none;
+}
+#botonesPrincipales li, #botonesAuxiliares li {
+	float:left;
+	border:none;
+	margin-left:3px;
+}
+	#botonSearch {
+		background:url(../../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.find.gif);
+	}
+	#botonBack {
+		background:url(../../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.showtableborders.gif);
+	}
+	#botonSave {
+		background:url(../../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.save.gif);
+	}
+	#botonEraseForm {
+		background:url(../../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.removeformat.gif);
+	}
+
+
+
+
+
+.error{color:#FF0033;font-weight:bold;}
+.obligatorio{color:#FF6633;font-weight:bold;}
+.tablaCampo{border:2px inset #FFFFFF;background-color:#FFFFFF;}
+	.comboDiv{overflow:hidden;width:100%;height:16px;border:0px;}
+	.comboSel{position:relative;left:-2px;top:-2px;width:101%;}
+	.comboDivMulti{overflow:hidden;width:100%;height:98px;border:0px;}
+	.comboSelMulti{position:relative; left:-3; top:-3; width:101%; height:117%;}
+.fechaDiv{overflow:hidden;width:18px;height:16px;}
+.fechaSel{position:relative;left:-2px; top:-2px; width:38px;}

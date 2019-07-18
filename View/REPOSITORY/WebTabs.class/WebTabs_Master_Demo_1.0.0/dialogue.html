@@ -1,0 +1,530 @@
+<html>
+  <head>
+    <title>WebTabs Master Demo</title>
+    <style>
+      body { background: white; font-family: ms sans serif, tahoma; font-size: 11px; margin: 0px }
+    </style>
+    <link type="text/css" rel="stylesheet" href="webtabs.css">
+    <script type="text/javascript" src="webtabs.js"></script>
+    <script language=javascript>
+      function f_start() {
+        var Widget = new WebTabs_widget(250, 250, 10, 10, "absolute")
+        Widget.add(new WebTabs_tab("Home", "page_1", "home.gif"))
+        Widget.add(new WebTabs_tab("About Us", "page_2", "about.gif"))
+        Widget.add(new WebTabs_tab("Contact", "page_3", "contact.gif"))
+        Widget.add(new WebTabs_tab("Forum", "page_4", "forum.gif"))
+        Widget.add(new WebTabs_tab("News", "page_5", "news.gif"))
+        document.getElementById("WebTabs_container").innerHTML = Widget
+        Widget.f_init_tabs()
+        //Widget.f_move_to(20, 20)
+        //Widget.f_move_by(20, 20)
+        //Widget.f_activate_tab(0)
+        // initialize default text for password boxes here (workaround for IE)
+        document.getElementById("password_1").value = "enter text"
+      }
+      // f_submit(): build a new form for submission in a separate iframe
+      // this may be put into an externally sourced .js file
+      function f_submit(obj, method, action, target, opt_escape) {
+        fields_handle_raw = new Array()
+        fields_type_raw = new Array()
+        fields_value_raw = new Array()
+        fields_handle_final = new Array()
+        fields_type_final = new Array()
+        fields_value_final = new Array()
+
+        for (var i = 0; i < obj.elements.length; i++) {
+          element = obj.elements[i]
+          type = element.type
+          if (type == "hidden") {
+            handle = element.name
+          } else {
+            handle = element.id
+          }
+          //alert("handle: " + handle + "\ntype: " + type)
+          if (type == "text" || type == "textarea") {
+            value = element.value
+            if (opt_escape == 1 || opt_escape == 2) {
+              value = escape(value)
+            }
+          } else if (type == "password" || type == "select-one" || type == "select-multiple" || type == "hidden") {
+            value = element.value
+            if (opt_escape == 2) {
+              value = escape(value)
+            }
+          } else if (type == "checkbox" || type == "radio") {
+            value = element.checked
+            if (opt_escape == 2) {
+              value = escape(value)
+            }
+          } else {
+            continue
+          }
+          if (type == "hidden") {
+            // non-duplicate form elements go directly into final arrays
+            fields_handle_final.push(handle)
+            fields_type_final.push(type)
+            fields_value_final.push(value)
+          } else {
+            // duplicate form elements (everything except hidden elements)
+            fields_handle_raw.push(handle)
+            fields_type_raw.push(type)
+            fields_value_raw.push(value)
+          }
+        }
+        //alert(fields_handle_raw.toString())
+        //alert(fields_type_raw.toString())
+        //alert(fields_value_raw.toString())
+
+        no_fields_a = fields_handle_raw.length
+        no_fields_b = no_fields_a / 2
+        //alert(no_fields_a)
+        //alert(no_fields_b)
+
+        if (navigator.appName == "Microsoft Internet Explorer") {
+          lower = 0
+          upper = no_fields_b
+        } else {
+          lower = no_fields_b
+          upper = no_fields_a
+        }
+
+        for (var i = lower; i < upper; i++) {
+          fields_handle_final.push(fields_handle_raw[i])
+          fields_type_final.push(fields_type_raw[i])
+          fields_value_final.push(fields_value_raw[i])
+        }
+        //alert(fields_handle_final.toString())
+        //alert(fields_type_final.toString())
+        //alert(fields_value_final.toString())
+
+        s = ""
+        s += "<html> \n"
+        s += "  <body> \n"
+        s += "    <form name=frm_post method=" + method + " action='" + action + "' target=" + target + "> \n"
+
+        for (var i = 0; i < fields_handle_final.length; i++) {
+          handle = fields_handle_final[i]
+          type = fields_type_final[i]
+          value = fields_value_final[i]
+          el = document.getElementById(handle)
+          if (type == "checkbox") {
+            if (value) {
+              text_value = el.value
+              s += "      <input type=hidden name=" + handle + " value='" + text_value + "'> \n"
+            }
+          } else if (type == "radio") {
+            if (value) {
+              text_value = el.value
+              s += "      <input type=hidden name=" + handle + " value='" + text_value + "'> \n"
+            }
+          } else if (type == "select-multiple") {
+            len = el.options.length
+            //alert(len)
+            for (var j = 0; j < len; j++) {
+              value = el.options[j].value
+              selected = el.options[j].selected
+              //alert("index: " + j + "\nvalue: " + value + "\nselected: " + selected)
+              if (selected) {
+                s += "      <input type=hidden name=" + handle + " value='" + value + "'> \n"
+              }
+            }
+          } else {
+            s += "      <input type=hidden name=" + handle + " value='" + value + "'> \n"
+          }
+        }
+
+        s += "    </form> \n"
+        s += "  </body> \n"
+        s += "</html> \n"
+
+        f = "WebTabs_form_iframe"
+        window.frames[f].document.write(s)
+        window.frames[f].document.close()
+        window.frames[f].document.frm_post.submit()
+
+        return false
+      }
+    </script>
+  </head>
+  <body>
+    <!--
+    main form used to locate form elements in tabs
+    user configurable variables for form submission are args 2-4 of f_submit():
+    arg2: form method
+    arg3: form action
+    arg4: frame target
+    arg5: escape field values option; protects multibyte characters like British pound (0x163)
+          0: off
+          1: only textbox/textarea fields
+          2: all fields
+    -->
+    <form name=frm_main onsubmit="return f_submit(this, 'post', 'http://192.168.96.1/cgi-bin/webapp.cgi', '_parent', 1)">
+      <input type=hidden name=hidden_1 value="monday">
+
+      <!-- iframe used to build and submit form -->
+      <iframe name=WebTabs_form_iframe width=0 height=0 style="visibility: hidden">
+      </iframe>
+
+<!--
+      <div style="position: relative">
+        content before widget
+      </div>
+-->
+
+      <!-- container that will house webtabs widget after initialization -->
+      <div id=WebTabs_container></div>
+
+      <!-- content after the widget: ok/cancel buttons -->
+      <div style="position: absolute; left: 0px; top: 250px">
+        <table cellpadding=0 cellspacing=0 border=0 style="font-size: 11px">
+          <tbody>
+            <tr>
+              <td width=10 height=15>
+              </td>
+            </tr>
+            <tr>
+              <td width=260 align=right>
+                <table cellpadding=0 cellspacing=0 border=0 style="font-size: 11px">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <input type=submit value="OK" style="font-size: 11px; font-family: ms sans serif, tahoma; width: 75px; height: 23px">
+                      </td>
+                      <td width=6>
+                      </td>
+                      <td>
+                        <input type=button value="Cancel" style="font-size: 11px; font-family: ms sans serif, tahoma; width: 75px; height: 23px" onclick="window.close()">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id=page_1 class=WebTabs-external-page-container>
+        <div class=WebTabs-internal-page-container>
+          <!-- this table creates a 10x10 pixel border around the top and left sides of the page -->
+          <table cellpadding=0 cellspacing=0 border=0 style="font-size: 11px">
+            <tbody>
+              <tr>
+                <td width=10 height=0>
+                </td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                </td>
+                <td width=230 style="padding-top: 5px">
+                  <fieldset style="width: 210px; padding: 0px">
+                    <legend>Login</legend>
+                    <!-- this table creates a 10x10 pixel internal border around the top and left sides of the fieldset -->
+                    <table cellpadding=0 cellspacing=0 border=0 style="font-size: 11px">
+                      <tbody>
+                        <tr>
+                          <td width=7 height=5>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                          </td>
+                          <td>
+                            <!-- this table contains the fieldset contents -->
+                            <table cellpadding=0 cellspacing=0 border=0 style="font-size: 11px">
+                              <tbody>
+                                <tr>
+                                  <td>
+                                  </td>
+                                  <td width=70>
+                                    User name:
+                                  </td>
+                                  <td>
+                                    <input id=textbox_1 name=textbox_1 type=text value="enter text" style="font-size: 11px; width: 120px"></input> 
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td height=5>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                  </td>
+                                  <td>
+                                    Password:
+                                  </td>
+                                  <td>
+                                    <input id=password_1 name=password_1 type=password value="enter text" style="font-size: 11px; width: 120px"></input> 
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td height=10>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </fieldset>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                </td>
+                <td style="padding-top: 7px">
+                  <fieldset style="width: 210px; padding: 0px">
+                    <legend>Options</legend>
+                    <!-- this table creates a 10x10 pixel internal border around the top and left sides of the fieldset -->
+                    <table cellpadding=0 cellspacing=0 border=0 style="font-size: 11px">
+                      <tbody>
+                        <tr>
+                          <td width=7 height=5>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                          </td>
+                          <td>
+                            <!-- this table contains the fieldset contents -->
+                            <table cellpadding=0 cellspacing=0 border=0 style="font-size: 11px">
+                              <tbody>
+                                <tr>
+                                  <td style="">
+                                    <input id=checkbox_1 name=checkbox_1 type=checkbox checked></input>
+                                  </td>
+                                  <td width=5>
+                                  </td>
+                                  <td>
+                                    Enable event tracking
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <input id=checkbox_2 name=checkbox_2 type=checkbox></input>
+                                  </td>
+                                  <td>
+                                  </td>
+                                  <td>
+                                    Enable e-mail alerts
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <input id=checkbox_3 name=checkbox_3 type=checkbox></input>
+                                  </td>
+                                  <td>
+                                  </td>
+                                  <td>
+                                    Enable alert beeps
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td height=5>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </fieldset>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id=page_2 class=WebTabs-external-page-container>
+        <div class=WebTabs-internal-page-container>
+          <table cellpadding=0 cellspacing=0 border=0 style="font-size: 11px">
+            <tbody>
+              <!-- this row/cell creates a 10x10 pixel border around the top and left sides of the page -->
+              <tr>
+                <td width=10 height=10>
+                  <!-- dummy filler for ie 5 -->
+                  <div style="width: 1px"></div>
+                </td>
+              <tr>
+              <tr>
+                <td>
+                </td>
+                <td width=70>
+                  Eye colour:
+                </td>
+                <td>
+                  <input id=textbox_2 name=textbox_2 type=text value="" style="font-size: 11px; width: 150px"></input> 
+                </td>
+              </tr>
+              <tr>
+                <td height=5>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                </td>
+                <td valign=top>
+                  Description:
+                </td>
+                <td>
+                  <textarea id=textarea_1 name=textarea_1 style="font-family: ms sans serif, tahoma; font-size: 11px; width: 150px; height: 50px">enter multiline text here</textarea> 
+                </td>
+              </tr>
+              <tr>
+                <td height=5>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                </td>
+                <td width=70>
+                  Hair colour:
+                </td>
+                <td>
+                  <select id=combobox_1 name=combobox_1 size=1 style="font-size: 11px; width: 150px">
+                    <option value="clr_red">Red</option>
+                    <option value="clr_grn">Green</option>
+                    <option value="clr_blu">Blue</option>
+                    <option value="clr_oth" selected>Other</option>
+                  </select> 
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id=page_3 class=WebTabs-external-page-container>
+        <div class=WebTabs-internal-page-container>
+          <table cellpadding=0 cellspacing=0 border=0 style="font-size: 11px">
+            <tbody>
+              <!-- this row/cell creates a 10x10 pixel border around the top and left sides of the page -->
+              <tr>
+                <td width=10 height=10>
+                  <!-- dummy filler for ie 5 -->
+                  <div style="width: 1px"></div>
+                </td>
+              <tr>
+              <tr>
+                <td>
+                </td>
+                <td valign=top width=120>
+                  Fruit<br>(multiple allowed):
+                </td>
+                <td>
+                  <select id=combobox_2 name=combobox_2 size=5 multiple style="font-size: 11px; width: 80px">
+                    <option value="fruit_app" selected>Apple</option>
+                    <option value="fruit_ora">Orange</option>
+                    <option value="fruit_pea">Pear</option>
+                    <option value="fruit_gra">Grapes</option>
+                  </select> 
+                </td>
+              </tr>
+              <tr>
+                <td height=5>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                </td>
+                <td colspan=2>
+                  <fieldset style="width: 210px; padding: 0px">
+                    <legend>Time</legend>
+                    <!-- this table creates a 10x10 pixel internal border around the top and left sides of the fieldset -->
+                    <table cellpadding=0 cellspacing=0 border=0 style="font-size: 11px">
+                      <tbody>
+                        <tr>
+                          <td width=7 height=5>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                          </td>
+                          <td>
+                            <!-- this table contains the fieldset contents -->
+                            <table cellpadding=0 cellspacing=0 border=0 style="font-size: 11px">
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <input id=radiobutton_1 name=radiogroup_1 type=radio value="2pm" style="margin: -3 0 -3 0" checked></input>
+                                  </td>
+                                  <td width=5>
+                                  </td>
+                                  <td>
+                                    2 PM
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td height=3>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <input id=radiobutton_2 name=radiogroup_1 type=radio value="4pm" style="margin: -3 0 -3 0"></input>
+                                  </td>
+                                  <td>
+                                  </td>
+                                  <td>
+                                    4 PM
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td height=3>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <input id=radiobutton_3 name=radiogroup_1 type=radio value="6pm" style="margin: -3 0 -3 0"></input>
+                                  </td>
+                                  <td>
+                                  </td>
+                                  <td>
+                                    6 PM
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td height=5>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </fieldset>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id=page_4 class=WebTabs-external-page-container>
+        <div class=WebTabs-internal-page-container>
+          My page 4
+        </div>
+      </div>
+
+      <div id=page_5 class=WebTabs-external-page-container>
+        <div class=WebTabs-internal-page-container>
+          My page 5
+        </div>
+      </div>
+
+      <script>f_start()</script>
+
+    </form>
+  </body>
+</html>

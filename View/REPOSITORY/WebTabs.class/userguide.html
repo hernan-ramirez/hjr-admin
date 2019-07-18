@@ -1,0 +1,970 @@
+<html>
+  <head>
+    <title></title>
+    <style type="text/css">
+      body { background-color: white; color: #555555; font-family: tahoma, arial; margin: 20px }
+      a { color: darkblue }
+      a:hover { color: red }
+      div.page { position: absolute; overflow: auto; width: 560px; height: 420px }
+      div.bullet { display: inline; color: #999999 }
+    </style>
+    <script>
+      product_type = "t"
+      product_release = "1.0"
+      product_version = "1.0.0"
+
+      if (product_type == "t") {
+        edition_name = "Trial"
+      } else if (product_type == "s") {
+        edition_name = "Standard"
+      } else if (product_type == "e") {
+        edition_name = "Enterprise"
+      } else if (product_type == "d") {
+        edition_name = "Developer"
+      }
+      product_name = "WebTabs " + product_release + " " + edition_name + " Edition"
+      document.title = product_name + " User Guide"
+
+      function f_start() {
+        current_page = null
+        f_show_page("Overview")
+        document.getElementById("navbar").style.visibility = ""
+      }
+      function f_show_page(page) {
+        if (current_page != null) {
+          document.getElementById("Page/" + current_page).style.visibility = "hidden"
+          document.getElementById("Bullet/" + current_page).style.color = "#999999"
+        }
+        document.getElementById("Page/" + page).style.visibility = ""
+        document.getElementById("Bullet/" + page).style.color = "red"
+        current_page = page
+      }
+    </script>
+  </head>
+  <body onload="f_start()">
+    <table width=750 cellpadding=0 cellspacing=0 border=0 Zbgcolor=yellow Zalign=center style="font-size: 0px">
+      <tbody>
+        <tr>
+          <td height=1 bgcolor=lightgrey>
+            <div style="height: 1px"></div>
+          </td>
+        </tr>
+        <tr>
+          <td height=1>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor=#eeeeee style="padding-top: 3px; padding-bottom: 3px; padding-left: 5px; padding-right: 5px">
+            <table width=100% height=14 cellpadding=0 cellspacing=0 border=0 style="font-size: 9px; font-weight: bold">
+              <tbody>
+                <tr>
+                  <td style="font-size: 11px; font-weight: normal" valign=top>
+                    > <b><script>document.write(document.title)</script><b>
+                  </td>
+                  <td nowrap align=right valign=top style="padding-top: 1px; font-size: 10px; font-weight: bold">
+<!--
+                    [ <a href="index.html">Home</a> | <a href="company.html">Company</a> | <a href="products.html">Products</a> | <a href="clients.html">Clients</a> | <a href="contact.html">Contact</a> | Support ]
+-->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td height=1>
+          </td>
+        </tr>
+        <tr>
+          <td height=1 bgcolor=lightgrey>
+            <div style="height: 1px"></div>
+          </td>
+        </tr>
+        <tr>
+          <td width=100% Zbgcolor=orange>
+            <table width=100% height=100% cellpadding=0 cellspacing=0 border=0 style="font-size: 11px">
+              <tbody>
+                <tr>
+                  <td height=10 Zbgcolor=lightgreen>
+                  </td>
+                  <td Zbgcolor=lightblue>
+                  </td>
+                  <td Zbgcolor=lightgreen>
+                  </td>
+                </tr>
+                <tr>
+<!--
+                  <td width=20 Zbgcolor=green>
+                    <div style="width: 20px; height: 1px"></div>
+                  </td>
+-->
+                  <td width=100% height=100% Zbgcolor=lightyellow style="font-size: 11px">
+                    <table width=100% height=450 cellpadding=0 cellspacing=0 border=0 style="font-size: 11px">
+                      <tbody>
+                        <tr valign=top style="font-size: 11px">
+                          <td width=150 Zbgcolor=lightgreen style="padding-left: 5px; border: 1px solid lightgrey; background: #eeeedd">
+                            <div id=navbar style="visibility: hidden">
+                              <br>
+                              <div id="Bullet/Overview" class=bullet>> </div><a href="javascript: f_show_page('Overview')">Overview</a>
+                              <br>
+                              <div id="Bullet/Edition Notes" class=bullet>> </div><a href="javascript: f_show_page('Edition Notes')">Edition Notes</a>
+                              <br>
+                              <div id="Bullet/Features" class=bullet>> </div><a href="javascript: f_show_page('Features')">Features</a>
+                              <br>
+                              <div id="Bullet/Live Demo" class=bullet>> </div><a href="javascript: f_show_page('Live Demo')">Live Demo</a>
+                              <br>
+                              <div id="Bullet/Tutorial" class=bullet>> </div><a href="javascript: f_show_page('Tutorial')">Tutorial</a>
+                              <br>
+                              <div id="Bullet/API Reference" class=bullet>> </div><a href="javascript: f_show_page('API Reference')">API Reference</a>
+                            </div>
+                          </td>
+                          <td Zbgcolor=lightblue width=10>
+                          </td>
+                          <td Zwidth=330 Zbgcolor=lightyellow style="padding-left: 10px; border: 1px solid lightgrey">
+                            <br>
+<div id="Page/Overview" class=page style="visibility: hidden; padding-right: 5px">
+                            <b>Overview</b>
+			    <table width=100% height=1 cellpadding=0 cellspacing=0 border=0 style="font-size: 0px">
+                              <tbody>
+                                <tr>
+                                  <td height=1>
+                                    <div style="height: 1px"></div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td height=1 bgcolor=red>
+                                    <div style="height: 1px"></div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <br>
+                            <font color=green style="font-weight: bold">> About WebTabs</font>
+                            <br>
+                            <br>
+                            WebTabs is a multi-row DHTML tab widget that was created out of the need to have a fast-responding, multi-row tab widget that emulates the look and feel of the standard Windows tab widget.
+                            <br>
+                            <br>
+                            We use this widget in our own outsource products, as a part of our web-based administration interfaces.
+                            <br>
+                            <br>
+                            Different editions of WebTabs available with varying features and usage rights, for different uses. Please check the <a href="http://www.phyrix.com/webtabs.html">Webtabs product home page</a> for more information.
+                            <br>
+                            <br>
+                            <table cellpadding=0 cellspacing=0 border=0 bgcolor=white style="font-size: 0px">
+                              <tbody>
+                                <tr>
+                                  <td height=1 colspan=4 bgcolor=royalblue>
+                                    <div style="height: 1px"></div>
+				  </td>
+                                </tr>
+                                <tr>
+                                  <td height=9 bgcolor=royalblue>
+                                    <div style="height: 1px"></div>
+                                  </td>
+                                  <td colspan=2>
+                                  </td>
+                                  <td bgcolor=royalblue>
+                                    <div style="height: 1px"></div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td width=1 bgcolor=royalblue>
+                                    <div style="height: 1px"></div>
+                                  </td>
+                                  <td width=2>
+                                  </td>
+                                  <td bgcolor=orange>
+                                    <img src="webtabs.gif"></img>
+                                  </td>
+                                  <td width=1 bgcolor=royalblue>
+                                    <div style="height: 1px"></div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td height=1 colspan=4 bgcolor=royalblue>
+                                    <div style="height: 1px"></div>
+                                  </td>
+                                </tr>
+                              <tbody>
+                            </table>
+                            <br>
+                            <font color=green style="font-weight: bold">> Letter from Management</font>
+                            <br>
+                            <br>
+                            <div style="position: absolute; border: 1px solid royalblue; padding: 10px; margin-right: 20px; color: #333333; background: #eeeef0">
+                              Dear Customer
+                              <br>
+                              <br>
+                              Thank you for your interest in our WebTabs product.
+                              <br>
+                              <br>
+                              Our entire team at Phyrix Systems has worked diligently to bring you both a useful and high quality product, backed up by solid support.
+                              <br>
+                              <br>
+                              I hope you find this software as useful as we have in our own outsource solutions.
+                              <br>
+                              <br>
+                              To ensure that we keep on maintaining and innovating this and other fine products, I value your personal constructive feedback regarding our products and services.
+                              <br>
+                              <br>
+                              At Phyrix, we really do care about our customers - whether you are an individual, a small business or a large concern. To back this up, I invite you to write me personally.
+                              <br>
+                              <br>
+                              I look forward to hearing from you. You can contact me at my e-mail address provided.
+                              <br>
+                              <br>
+                              Sincerely,
+                              <br>
+                              <br>
+                              Sebastian Spitzner
+                              <br>
+                              Director
+                              <br>
+                              Phyrix Systems (Pty) Ltd
+                              <br>
+                              <a href="mailto:sebastian@phyrix.com">sebastian@phyrix.com</a>
+                            </div>
+</div>
+<div id="Page/Edition Notes" class=page style="visibility: hidden; padding-right: 5px">
+                            <b>Edition Notes</b>
+			    <table width=100% height=1 cellpadding=0 cellspacing=0 border=0 style="font-size: 0px">
+                              <tbody>
+                                <tr>
+                                  <td height=1>
+                                    <div style="height: 1px"></div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td height=1 bgcolor=red>
+                                    <div style="height: 1px"></div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <br>
+                            <font color=green style="font-weight: bold">> Edition Identification</font>
+                            <br>
+                            <br>
+                            This software is <font color=royalblue><b><script>document.write(product_name)</script></b></font> version <font color=royalblue><b><script>document.write(product_version)</script></b></font>.
+                            <br>
+                            <br>
+                            <font color=green style="font-weight: bold">> Licence Agreement</font>
+                            <br>
+                            <br>
+                            Please ensure that you understand how you may use this edition of WebTabs. You can read the local copy of the <a href="javascript: window.open('licence.txt', 'licence', config='width=600,height=600,scrollbars=yes') ; void(0)">licence agreement</a>.
+                            <br>
+                            <br>
+                            You can find answers to certain licence questions at the <a href="http://www.phyrix.com/webtabs.html">WebTabs product home page</a>.
+                            <br>
+                            <br>
+                            If you still have a specific licence questions, we welcome your enquiries at <a href="mailto:contact@phyrix.com">contact@phyrix.com</a>. If you are in any doubt as to whether your intended use of this software is covered by this licence, please e-mail us to be on the safe side.
+                            <br>
+                            <br>
+                            <font color=green style="font-weight: bold">> Specific Licence Instructions</font>
+                            <br>
+                            <br>
+                            Here are some details to keep in mind when using this software.
+                            <br>
+                            <br>
+                            <u>Distribution of Software Archive</u>
+                            <br>
+                            <br>
+                            <script>
+                              if (product_type == "t") {
+                                document.write("<li>You may freely distribute the " + product_name + " .ZIP archive as you like, in its original form and archive file name.")
+                              } else if (product_type == "s" || product_type == "e" || product_type == "d") {
+                                document.write("<li>You may not distribute the " + product_name + " .ZIP archive to anyone.")
+                              }
+                            </script>
+                            <br>
+                            <br>
+                            <u>Modification of Source Code</u>
+                            <br>
+                            <br>
+                            <script>
+                              if (product_type == "t" || product_type == "s" || product_type == "e") {
+                                document.write("<li>You may not modify the " + product_name + " source code.")
+                              } else if (product_type == "d") {
+                                document.write("<li>You may modify the " + product_name + " source code, and redistribute that code, as long as you recompress the source code file \"webtabs.js\", and only distribute the compressed copy. See the section \"Source Code Compression\" below for more details.")
+                                document.write("<li>If you modify the " + product_name + " source code, you must clearly mark the source file(s) in question at the top, together with the existing notice from Phyrix Systems.")
+                              }
+                            </script>
+                            <script>
+                              s = ''
+                              s += '<br>'
+                              s += '<br>'
+                              s += '<font color=green style="font-weight: bold">> Source Code Compression</font>'
+                              s += '<br>'
+                              s += '<br>'
+                              s += 'Source code compression refers to collapsing all lines of source code, by removing the whitespace and end-of-line characters, so that the code is contained on only one long line. This renders the code humanly unreadable by others, thus making it very difficult to modify the source code. This is an industry standard way of obfuscating source code for scripting languages, such as JavaScript (in which WebTabs is written), that would otherwise provide users with the unhindered ability to read and modify the code.'
+                              s += '<br>'
+                              s += '<br>'
+                              s += 'This edition of WebTabs is distributed with two copies of source code, in two seperate files: "webtabs.js" and "webtabs.' + product_version + '.developer.js".'
+                              s += '<br>'
+                              s += '<br>'
+                              s += 'The file "webtabs.js" contains the compressed and unreadable source code of WebTabs, as shipped in the Enterprise Edition.'
+                              s += '<br>'
+                              s += '<br>'
+                              s += 'The file "webtabs.' + product_version + '.developer.js" contains the fully readable source code of WebTabs.'
+                              s += '<br>'
+                              s += '<br>'
+                              s += 'When you distribute software products that use WebTabs, you must ensure that the WebTabs source code, with or without your own modifications,  is in compressed form.'
+                              s += '<br>'
+                              s += '<br>'
+                              s += 'Thus, if you do not want to modify the WebTabs source code, simply use the Enterprise Edition file "webtabs.js" is it is. Although this file labeled as "Enterprise Edition" at the top, you are not bound to its use as defined by the Enterprise Edition licence. Rather, you are allowed to use it (and especially distribute it) under the terms of the Developer Edition licence.'
+                              s += '<br>'
+                              s += '<br>'
+                              s += 'If, however, you do want to modify the WebTabs source code, then edit the file "webtabs.' + product_version + '.enterprise.js" as you require, then compress it as described, and simply rename it to "webtabs.js" when you ship it with your software or publish it on your servers.'
+                              s += '<br>'
+                              s += '<br>'
+                              s += '<font color=red><b>WARNING:</b> Exercise care during your software packaging not to accidentally include the uncompressed copy of the WebTabs source code with your product, or place it on your server!</font>'
+                              if (product_type == "d") {
+                                document.write(s)
+                              }
+                            </script>
+</div>
+<div id="Page/Features" class=page style="visibility: hidden; padding-right: 5px">
+                            <b>Features</b>
+			    <table width=100% height=1 cellpadding=0 cellspacing=0 border=0 style="font-size: 0px">
+                              <tbody>
+                                <tr>
+                                  <td height=1>
+                                    <div style="height: 1px"></div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td height=1 bgcolor=red>
+                                    <div style="height: 1px"></div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <br>
+                            <font color=green style="font-weight: bold">> Multi-row tabs</font>
+                            <br>
+                            <br>
+                            Never again be lmited to a single row of tabs! Multiple rows of tabs are supported.
+                            <br>
+                            <br>
+                            <font color=green style="font-weight: bold">> Tab icons</font>
+                            <br>
+                            <br>
+                            You can include 16x16 pixel icon images to display next to tab headings. You may select which tabs (none, some or all) have icons.
+                            <br>
+                            <br>
+                            <font color=green style="font-weight: bold">> Instant client-side page switching</font>
+                            <br>
+                            <br>
+                            All tab pages that hold the content for your tabs are loaded automatically at start-up, so clicking and activating a tab displays its contents instantly. Tab-switch rendering is performed by JavaScript on the client browser, so no slow server-fetches are required. Users no longer have to experience long delays when selecting a tab.
+                            <br>
+                            <br>
+                            <font color=green style="font-weight: bold">> Vector graphics rendering</font>
+                            <br>
+                            <br>
+                            The actual drawing of the widget is performed using DIV elements, providing pixel-perfect control.
+                            <br>
+                            <br>
+                            <font color=green style="font-weight: bold">> No slow-loading rendering images used</font>
+                            <br>
+                            <br>
+                            The vector rendering used draws all round corners, so no corner or tab images are used as is often the case with many other HTML tab widgets.
+                            <br>
+                            <br>
+                            <font color=green style="font-weight: bold">> Automatic single-row/multi-row detection and tab resizing</font>
+                            <br>
+                            <br>
+                            Multi-row tabs are automatically used if your tabs do not fit on one row. You don't have to worry about managing any tabs at all.
+                            <br>
+                            <br>
+                            <font color=green style="font-weight: bold">> Cross-browser platform support</font>
+                            <br>
+                            <br>
+                            Cross-browser support means that the higest number of people possible can view your tab widgets, whether you are building web sites or DHTML applications.
+                            <br>
+                            <br>
+                            Widget display is independent on the underlying operating system, so Windows, Macintosh and UNIX/Linux users can all access your tabs using a supported browser.
+                            <br>
+                            <br>
+			    <u>Currently supported browsers:</u>
+                            <br>
+                            <br>
+			    <li>Internet Explorer 5.0 +
+                            <br>
+			    <li>Netscape 6.0 +
+                            <br>
+			    <li>Mozilla 1.0 +
+                            <br>
+                            <br>
+                            <font color=green style="font-weight: bold">> Theme customization through CSS</font>
+                            <br>
+                            <br>
+                            You can easily change the colours used for the tab header text, background and borders.
+                            <br>
+                            <br>
+                            The default style sheets automatically use the colours from the user's own desktop settings.
+                            <br>
+                            <br>
+                            <font color=green style="font-weight: bold">> No Java required</font>
+                            <br>
+                            <br>
+                            Because the widget is written in JavaScript, you don't have to worry about Java being installed on client computers.
+</div>
+<div id="Page/Live Demo" class=page style="visibility: hidden; padding-right: 5px">
+                            <b>Live Demo</b>
+			    <table width=100% height=1 cellpadding=0 cellspacing=0 border=0 style="font-size: 0px">
+                              <tbody>
+                                <tr>
+                                  <td height=1>
+                                    <div style="height: 1px"></div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td height=1 bgcolor=red>
+                                    <div style="height: 1px"></div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <br>
+                            Here are some examples of WebTabs in use. Click on a tab to activate it.
+                            <br>
+                            <br>
+                            These examples are provided in the sample files as indicated.
+                            <br>
+                            <br>
+                            <font color=green style="font-weight: bold">> Multi-row tabs with icons</font> <font color=royalblue>(WebTabs_demo_1.html)</font>
+                            <br>
+                            <br>
+                            <div style="width: 0px; border: 1px solid royalblue">
+			      <iframe src="WebTabs_demo_1.html" frameborder=no width=270 height=160 style="border: 1px solid white"></iframe>
+                            </div>
+                            <br>
+                            <font color=green style="font-weight: bold">> Regular multi-row tabs</font> <font color=royalblue>(WebTabs_demo_2.html)</font>
+                            <br>
+                            <br>
+                            <div style="width: 0px; border: 1px solid royalblue">
+			      <iframe src="WebTabs_demo_2.html" frameborder=no width=270 height=160 style="border: 1px solid white"></iframe>
+                            </div>
+                            <br>
+                            <font color=green style="font-weight: bold">> Single row of regular tabs</font> <font color=royalblue>(WebTabs_demo_3.html)</font>
+                            <br>
+                            <br>
+                            <div style="width: 0px; border: 1px solid royalblue">
+			      <iframe src="WebTabs_demo_3.html" frameborder=no width=270 height=160 style="border: 1px solid white"></iframe>
+                            </div>
+</div>
+<div id="Page/Tutorial" class=page style="visibility: hidden; padding-right: 5px">
+                            <b>Tutorial</b>
+			    <table width=100% height=1 cellpadding=0 cellspacing=0 border=0 style="font-size: 0px">
+                              <tbody>
+                                <tr>
+                                  <td height=1>
+                                    <div style="height: 1px"></div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td height=1 bgcolor=red>
+                                    <div style="height: 1px"></div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <br>
+                            This tutorial will show you how to get your tab project up and running quickly.
+                            <br>
+                            <br>
+                            The easiest way to create your tab widget is to use one of the supplied demo files as a template, and to build from there. The "Live Demo" page shows these files in use.
+                            <br>
+                            <br>
+                            To build your WebTabs tab widget from scratch, follow these instructions.
+                            <br>
+                            <br>
+                            <font color=green style="font-weight: bold">> Setup</font>
+                            <br>
+                            <br>
+                            You need the files "webtabs.js", which contains the WebTabs JavaScript source code, and "webtabs.css", which contains the WebTabs theme style sheet declarations.
+                            <br>
+                            <br>
+                            Put these files in the same directory as your new HTML page.
+                            <br>
+                            <br>
+                            <font color=green style="font-weight: bold">> The Head Code</font>
+                            <br>
+                            <br>
+                            The following code must be placed in the HEAD section of your page.
+                            <br>
+                            <br>
+                            <b>1.</b> Create a link to include the style sheet file "webtabs.css".
+			    <div style="background: royalblue; padding: 1px; margin-right: 20px; margin-top: 5px">
+                              <div style="padding: 3px; font-family: courier new; color: royalblue; background: lightyellow">
+                                &lt;link type="text/css" rel="stylesheet" href="webtabs.css">&lt;/link>
+                              </div>
+                            </div>
+                            <br>
+                            <b>2.</b> Create a link to include the script file "webtabs.js".
+			    <div style="background: royalblue; padding: 1px; margin-right: 20px; margin-top: 5px">
+                              <div style="padding: 3px; font-family: courier new; color: royalblue; background: lightyellow">
+                                &lt;script type="text/javascript" src="webtabs.js">&lt;/script>
+                              </div>
+                            </div>
+                            <br>
+                            <b>3.</b> Create a script containing a function that defines and initializes the WebTab object.
+			    <div style="background: royalblue; padding: 1px; margin-right: 20px; margin-top: 5px">
+                              <div style="padding: 3px; font-family: courier new; color: royalblue; background: lightyellow">
+                                &lt;script language=javascript>
+                                <br>
+                                &nbsp;  function f_start() {
+                                  <br>
+                                &nbsp;&nbsp;&nbsp;    var Widget = new WebTabs_widget(200, 100, 10, 10, "absolute")
+                                    <br>
+                                &nbsp;&nbsp;&nbsp;    Widget.add(new WebTabs_tab("Title 1", "page_1", null))
+                                    <br>
+                                &nbsp;&nbsp;&nbsp;    document.getElementById("WebTabs_container").innerHTML = Widget
+                                    <br>
+                                &nbsp;&nbsp;&nbsp;    Widget.f_init_tabs()
+                                    <br>
+                                &nbsp;  }
+                                  <br>
+                                &lt;/script>
+                              </div>
+                            </div>
+                            <li> Replace the "200" and "100" with the pixel width and height of the widget, respectively.
+                            <li> Replace the "10" and "10" with the X and Y pixel coordinates of the widget, respectively.
+                            <li> If you want other HTML content before or after the widget, replace "absolute" with "relative".
+                            <li> Replace the tab heading text "Title 1" with the text of your choice for the first tab.
+                            <li> If you want to display an icon image file in this tab, change the "null" to the image file name.
+                            <li> Copy the "Widget.add" line for as many tabs as you want, and change the text/page/icon.
+                            <br>
+                            <br>
+                            <font color=green style="font-weight: bold">> The Body Code</font>
+                            <br>
+                            <br>
+                            The following code must be placed in the BODY section of your page.
+                            <br>
+                            <br>
+                            <b>4.</b> Create the DIV element that contains your pre-widget HTML content (if any).
+			    <div style="background: royalblue; padding: 1px; margin-right: 20px; margin-top: 5px">
+                              <div style="padding: 3px; font-family: courier new; color: royalblue; background: lightyellow">
+                                &lt;!--
+                                <br>
+                                &lt;div style="position: relative">
+                                <br>
+                              &nbsp;      content before widget
+                                  <br>
+                                  &lt;/div>
+                                  <br>
+                                -->
+                              </div>
+                            </div>
+                            <li> If you want to display content before the widget, remove the comments and fill in the content.
+                            <li> If you want the widget to display relative to any pre-widget content, set the WebTabs_widget objet position to "relative" and the "X, Y" coordinates to "0, 0".
+                            <br>
+                            <br>
+                            <b>5.</b> Create the DIV element that will be the container for the widget.
+			    <div style="background: royalblue; padding: 1px; margin-right: 20px; margin-top: 5px">
+                              <div style="padding: 3px; font-family: courier new; color: royalblue; background: lightyellow">
+                                &lt;div id=WebTabs_container>&lt;/div>
+                              </div>
+                            </div>
+                            <br>
+                            <b>6.</b> Create the DIV element that contains your post-widget HTML content (if any).
+			    <div style="background: royalblue; padding: 1px; margin-right: 20px; margin-top: 5px">
+                              <div style="padding: 3px; font-family: courier new; color: royalblue; background: lightyellow">
+                                &lt;!--
+                                <br>
+                                &lt;div style="position: relative">
+                                <br>
+                              &nbsp;      content after widget
+                                  <br>
+                                &lt;/div>
+                                <br>
+                                -->
+                              </div>
+                            </div>
+                            <li> If you want to display content after the widget, remove the comments and fill in the content.
+                            <br>
+                            <br>
+                            <b>7.</b> Create the DIV page elements that will contain your individual tab content.
+			    <div style="background: royalblue; padding: 1px; margin-right: 20px; margin-top: 5px">
+                              <div style="padding: 3px; font-family: courier new; color: royalblue; background: lightyellow">
+                                &lt;div id=page_1 class=WebTabs-external-page-container>
+                                <br>
+                              &nbsp;    &lt;div class=WebTabs-internal-page-container>
+                                  <br>
+                              &nbsp;&nbsp;&nbsp;      My page 1
+                                    <br>
+                              &nbsp;    &lt;/div>
+                                  <br>
+                                &lt;/div>
+                              </div>
+                            </div>
+                            <li> Copy the page container lines for as many tabs as you have defined, and increase the page number.
+                            <br>
+                            <br>
+                            <b>8.</b> Finally, create a script that runs the function defined in the HEAD section, to initialize the widget.
+			    <div style="background: royalblue; padding: 1px; margin-right: 20px; margin-top: 5px">
+                              <div style="padding: 3px; font-family: courier new; color: royalblue; background: lightyellow">
+                                &lt;script>f_start()&lt;/script>
+                              </div>
+                            </div>
+                            <li> Note: Running the function from the BODY tag's ONLOAD event handler is not cross-browser compatible.
+                            <br>
+                            <br>
+                            <font color=green style="font-weight: bold">> Caveats</font>
+                            <br>
+                            <br>
+                            <li>Displaying multiple tab widgets per page.
+                            <br>
+                            <br>
+                            It is only possible to create one tab widget per window. If you want to display multiple widget instances on a page, in one window, you must load each widget in a separate IFRAME element. This effectively uses a window within a window. An example of this technique being used is visible on the "Live Demo" page of this tutorial.
+                            <br>
+</div>
+<div id="Page/API Reference" class=page style="visibility: hidden; padding-right: 5px">
+                            <b>API Reference</b>
+			    <table width=100% height=1 cellpadding=0 cellspacing=0 border=0 style="font-size: 0px">
+                              <tbody>
+                                <tr>
+                                  <td height=1>
+                                    <div style="height: 1px"></div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td height=1 bgcolor=red>
+                                    <div style="height: 1px"></div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <br>
+                            <font color=green style="font-weight: bold">> The WebTabs_widget Object</font>
+                            <br>
+                            <br>
+                            Constructor Syntax:
+                            <br>
+                            <br>
+                            <div style="padding-left: 20px; color: royalblue">
+                              new WebTabs_widget(w, h, x, y, position) 
+                            </div>
+                            <br>
+                            Contructor Arguements:
+                            <br>
+                            <br>
+<!-- ################################################################################ -->
+                            <div style="padding-left: 20px">
+                              <table width=500 cellpadding=0 cellspacing=1 border=0 style="font-size: 10px">
+                                <tbody valign=top style="font-size: 10px">
+                                  <tr>
+                                    <td bgcolor=#8866cc style="padding: 2 5 2 5; color: white; font-weight: bold">
+                                      Name
+                                    </td>
+                                    <td bgcolor=#8866cc style="padding: 2 5 2 5; color: white; font-weight: bold">
+                                      Type
+                                    </td>
+                                    <td bgcolor=#8866cc style="padding: 2 5 2 5; color: white; font-weight: bold">
+                                      Description
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      w
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      integer
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      The width of the tab widget in pixels.
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      h
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      integer
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      The height of the tab widget in pixels.
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      x
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      integer
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      The X coordinate of the tab widget's top left corner in pixels.
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      y
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      integer
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      The Y coordinate of the tab widget's top left corner in pixels.
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      position
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      string
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      The position of the tab widget.
+                                      <br>
+                                      <li>Has to be one of "absolute" or "relative".
+                                      <br>
+                                      <li>If "absolute", then the position is relative to the parent container; usually the current window.
+                                      <br>
+                                      <li>If "relative", then the position is relative to the HTML content in the page placed before the "WebTabs_container" DIV element.
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+<!-- ################################################################################ -->
+                            <br>
+                            Constructor Usage Example:
+                            <br>
+                            <br>
+                            <div style="padding-left: 20px; color: royalblue">
+                              var Widget = new WebTabs_widget(250, 140, 10, 10, "absolute") 
+                            </div>
+                            <br>
+                            Methods:
+                            <br>
+                            <br>
+<!-- ################################################################################ -->
+                            <div style="padding-left: 20px">
+                              <table width=500 cellpadding=0 cellspacing=1 border=0 style="font-size: 10px">
+                                <tbody valign=top style="font-size: 10px">
+                                  <tr>
+                                    <td bgcolor=#8866cc style="padding: 2 5 2 5; color: white; font-weight: bold">
+                                      Name
+                                    </td>
+                                    <td bgcolor=#8866cc style="padding: 2 5 2 5; color: white; font-weight: bold">
+                                      Returns
+                                    </td>
+                                    <td bgcolor=#8866cc style="padding: 2 5 2 5; color: white; font-weight: bold">
+                                      Description
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      add(tab)
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      void
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      Adds a WebTabs_tab object to the WebTabs_widget object (tab widget).
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      f_init_tabs()
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      void
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      Initializes the tab widget.
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      f_activate_tab(i)
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      void
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      Activates tab number i, where numbering starts at 0.
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      f_move_to(x, y)
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      void
+                                  </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      Move tab widget to X and Y coordinates as indicated in pixels.
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      f_move_by(x, y)
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      void
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      Move tab widget by X and Y coordinates as indicated in pixels..
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+<!-- ################################################################################ -->
+                            <br>
+                            <font color=green style="font-weight: bold">> The WebTabs_tab Object</font>
+                            <br>
+                            <br>
+                            Constructor Syntax:
+                            <br>
+                            <br>
+                            <div style="padding-left: 20px; color: royalblue">
+                              new WebTabs_tab(text, page, icon)
+                            </div>
+                            <br>
+                            Contructor Arguements:
+                            <br>
+                            <br>
+<!-- ################################################################################ -->
+                            <div style="padding-left: 20px">
+                              <table width=500 cellpadding=0 cellspacing=1 border=0 style="font-size: 10px">
+                                <tbody valign=top style="font-size: 10px">
+                                  <tr>
+                                    <td bgcolor=#8866cc style="padding: 2 5 2 5; color: white; font-weight: bold">
+                                      Name
+                                    </td>
+                                    <td bgcolor=#8866cc style="padding: 2 5 2 5; color: white; font-weight: bold">
+                                      Type
+                                    </td>
+                                    <td bgcolor=#8866cc style="padding: 2 5 2 5; color: white; font-weight: bold">
+                                      Description
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      text
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      string
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      The title text of the tab.
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      page
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      string
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      The name of the DIV element containing the HTML onctnet of the tab.
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      icon
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      string
+                                    </td>
+                                    <td bgcolor=#dddddd style="padding: 2 5 2 5">
+                                      The name of the icon image file to use for the tab, or a null string ("", '' or null) if no icon is to be used.
+                                      <br>
+                                      <li>The image dimensions should be 16x16 pixels.
+                                      <br>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+<!-- ################################################################################ -->
+                            <br>
+                            Constructor Usage Example:
+                            <br>
+                            <br>
+                            <div style="padding-left: 20px; color: royalblue">
+                              Widget.add(new WebTabs_tab("Home", "page_1", "home.gif"))
+                            </div>
+                            <div style="padding-left: 25px">
+                              or
+                            </div>
+                            <div style="padding-left: 20px; color: royalblue">
+                              Widget.add(new WebTabs_tab("Home", "page_1", null))
+                            </div>
+                            <br>
+                            Methods:
+                            <br>
+                            <br>
+                            <div style="padding-left: 20px">
+                              (None)
+                            </div>
+</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+<!--
+                  <td width=20 Zbgcolor=green>
+                    <div style="width: 20px; height: 1px"></div>
+                  </td>
+-->
+                </tr>
+                <tr>
+                  <td height=10 Zbgcolor=lightgreen>
+                  </td>
+                  <td Zbgcolor=lightblue>
+                  </td>
+                  <td Zbgcolor=lightgreen>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td height=1 bgcolor=lightgrey>
+            <div style="height: 1px"></div>
+          </td>
+        </tr>
+        <tr>
+          <td height=1>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor=#eeeeee style="padding-top: 3px; padding-bottom: 3px; padding-left: 5px; padding-right: 5px">
+            <table width=100% height=14 cellpadding=0 cellspacing=0 border=0 style="font-size: 9px">
+              <tbody>
+                <tr>
+                  <td style="font-size: 10px; color: #999999" valign=top>
+                    &copy; 2004 Phyrix Systems (Pty) Ltd
+                  </td>
+                  <td nowrap align=right valign=top style="padding-top: 1px; font-size: 10px; font-weight: bold">
+<!--
+                    [ <a href="policies.html">Usage Policy</a> ]
+-->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td height=1>
+          </td>
+        </tr>
+        <tr>
+          <td height=1 bgcolor=lightgrey>
+            <div style="height: 1px"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

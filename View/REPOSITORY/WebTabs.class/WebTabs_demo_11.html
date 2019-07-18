@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Tab Demo 1</title>
+<style>
+  body,td { font-family: Arial; font-size: 11px; }
+  .interna{
+	width:100%;
+	padding:1px 1px 1px 1px;
+	height:100%;
+  }
+</style>
+<link type="text/css" rel="stylesheet" href="webtabs.css">
+<script type="text/javascript" src="webtabs.js"></script>
+<script language=javascript>
+      function f_start() {
+        var Widget = new WebTabs_widget(230, 550, 5, 5, "absolute")
+        Widget.add(new WebTabs_tab("Modulos", "page_1", "home.gif"))
+        Widget.add(new WebTabs_tab("Administración", "page_2", "about.gif"))
+        document.getElementById("WebTabs_container").innerHTML = Widget
+        Widget.f_init_tabs()
+        //Widget.f_move_to(20, 20)
+        //Widget.f_move_by(20, 20)
+        //Widget.f_activate_tab(0)
+      }
+    </script>
+</head>
+<body>
+<div id=WebTabs_container></div>
+<div id=page_1 class="WebTabs-external-page-container">
+  <TABLE class="interna">
+    <tr>
+      <td align="right" height="20"><IMG src="forum.gif" width="16" height="16" title="Nombre del Usuario">
+      </td>
+    </tr>
+    <tr>
+      <td align="right"><iframe src="../TreeMenu.class/1.5/example1.html" style="border:0; width:100%; height:100%" frameborder="0"> </iframe>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" height="20"><IMG src="../../FCKeditor/images/toolbar/office2003/button.undo.gif" width="21" height="20" title="Salir"> </td>
+    </tr>
+  </TABLE>
+</div>
+<div id=page_2 class=WebTabs-external-page-container> </div>
+<script>f_start()</script>
+</body>
+</html>

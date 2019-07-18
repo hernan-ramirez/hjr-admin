@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>Mi Ejemplo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<script type="text/javascript" src="local/webfxlayout.js"></script>
+<script type="text/javascript" src="js/tabpane.js"></script>
+<link type="text/css" rel="stylesheet" href="css/luna/tab.css" />
+<link type="text/css" rel="stylesheet" href="../../Default/Look/general.css" />
+<style type="text/css">
+
+.dynamic-tab-pane-control .tab-page {
+	height:		100%;
+}
+
+.dynamic-tab-pane-control .tab-page .dynamic-tab-pane-control .tab-page {
+	height:		100px;
+}
+
+body{
+	margin:10px;
+	filter:	progid:DXImageTransform.Microsoft.Gradient(StartColorStr=#ffD4D0C8, EndColorStr=#ffF2EEE6, GradientType=0);
+}
+
+.dynamic-tab-pane-control h2 {
+	text-align:	center;
+	width:		auto;
+}
+
+.dynamic-tab-pane-control h2 a {
+	display:	inline;
+	width:		auto;
+}
+
+.dynamic-tab-pane-control a:hover {
+	background: transparent;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+	function cargarIFrame(ob, target){
+	
+		ob = eval( "window.document.all." + ob );
+		if ( ob.src != target ){
+			ob.src = target;
+			alert("Actualizo");
+		}
+		
+	}
+
+	tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
+	//tp1.setClassNameTag( "dynamic-tab-pane-control-luna" );
+	//alert( 0 )
+</script>
+
+<!-- id is not necessary unless you want to support multiple tabs with persistence -->
+<div class="tab-pane" id="tabPane2">
+
+	<div class="tab-page">
+		<h2 class="tab">
+		<SPAN onClick="javascript:cargarIFrame('formulario', '../../default/form.htm');" style="width:100%;height:100%">Formulario SOtomototo</SPAN>
+		</h2>		
+		<iframe name="formulario" scrolling="auto" frameborder="0" width="100%" height="100%"> </iframe>		
+	</div>
+
+	<div class="tab-page">
+		<h2 class="tab">
+		<SPAN onClick="javascript:cargarIFrame('listado', '../../default/list.htm');" style="width:100%;height:100%">Lista</SPAN></h2>
+		<iframe name="listado" scrolling="auto" frameborder="0" width="100%" height="100%"> </iframe>		
+	</div>
+
+	<div class="tab-page">
+		<h2 class="tab">
+		<SPAN onClick="javascript:cargarIFrame('arbol', '../../default/treeAdmin.htm');" style="width:100%;height:100%">Arbol</SPAN></h2>
+		<iframe name="arbol" scrolling="auto" frameborder="0" width="100%" height="100%"> </iframe>		
+	</div>
+
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+
+setupAllTabs();
+
+//]]>
+</script>
+
+</body>
+</html>

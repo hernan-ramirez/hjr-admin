@@ -1,0 +1,8 @@
+Buscar:
+
+; background: yellow; border: 1px solid
+
+
+Poner:
+
+; background: yellow; border: 1px solid; display:none

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs for page Smarty.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+						<script src="../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../media/images/plus.png";
+				imgMinus.src = "../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="file-name"><img src="../media/images/Page_logo.png" alt="File" style="vertical-align: middle">/ModelApp/Smarty.php</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+									<a href="#sec-includes">Includes</a>
+			|											<a href="#sec-functions">Functions</a>
+			</div>
+	<div class="info-box-body">	
+		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Modelo de Smarty adaptado</p>
+<p class="description"><p>Este archivo contiene una adaptacion de Smarty para  el manejo de las plantillas de la aplicación.<br />  Contiene remplazos estáticos</p></p>
+	<ul class="tags">
+				<li><span class="field">since:</span> 2005.03.15</li>
+				<li><span class="field">filesource:</span> <a href="..//__filesource/fsource_ModelApp__ModelAppSmarty.php.html">Source Code for this file</a></li>
+				<li><span class="field">version:</span> 1.0</li>
+				<li><span class="field">author:</span> Hernan Ramirez &lt;<a href="mailto:Hernan.Javier.Ramirez@gmail.com">Hernan.Javier.Ramirez@gmail.com</a>&gt;</li>
+				<li><span class="field">see:</span> <a href="../ModelApp/MySmarty.html">MySmarty</a></li>
+				<li><span class="field">link:</span> <a href="http://smarty.php.net">Sitio Smarty</a></li>
+				<li><span class="field">see:</span> remplazo_path
+ y define las etiquetas en forma de
+ comentarios de html para que sean navegables por el explorer
+ sin necesidad de un server corriendo.</li>
+			</ul>
+		
+			</div>
+</div>
+		
+
+	<a name="sec-includes"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Includes</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Includes</span>
+			|													<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">	
+			<a name="_Smarty/Smarty_class_php"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Page.png" alt=" " />
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">'Smarty/Smarty.class.php'</span>)
+			(line <span class="line-number"><a href="..//__filesource/fsource_ModelApp__ModelAppSmarty.php.html#a30">30</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">PLANTILLA</p>
+<p class="description"><p>Las plantillas de esta aplicación estan  manejadas por Smarty</p></p>
+	
+</div>
+		</div>
+	</div>
+	
+	
+	
+	<a name="sec-functions"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Functions</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-includes">Includes</a>
+				|												<span class="disabled">Functions</span>
+		</div>
+		<div class="info-box-body">	
+			<a name="functionremplazo_path" id="functionremplazo_path"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">remplazo_path</span> (line <span class="line-number"><a href="..//__filesource/fsource_ModelApp__ModelAppSmarty.php.html#a53">53</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Filtro de Entrada</p>
+<p class="description"><p>Para remplazar las extenciones htm por php  y el path de los repositorios</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> devuelve la fuente con los replace hechos.</li>
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">$source</span>
+		<span class="method-name">
+			remplazo_path
+		</span>
+					(<span class="var-type">$source</span>&nbsp;<span class="var-name">$source</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$source</span>
+				<span class="var-name">$source</span><span class="var-description">: es la fuente htm que esta agarrando Smarty</span>			</li>
+				</ul>
+		
+	
+</div>
+		</div>
+	</div>
+	
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 18 Mar 2005 12:55:53 -0300 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.3.0RC3</a>
+	</p>
+	</div></body>
+</html>

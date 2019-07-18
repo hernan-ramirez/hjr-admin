@@ -1,0 +1,46 @@
+<!--{ strip }-->
+<html>
+<head>
+    <title>Menu</title>
+    <script type="text/javascript" src="../REPOSITORY/TreeMenu.class/ie5.js"></script>
+    <script type="text/javascript" src="../REPOSITORY/TreeMenu.class/1.5/DynamicTree.js"></script>
+    <link rel="stylesheet" type="text/css" href="../REPOSITORY/TreeMenu.class/1.5/DynamicTree.css" />
+	<style>
+	.DynamicTree .doc a:active {
+		color: Background;
+		font-weight:bold;
+	}
+	</style>
+</head>
+<body style="padding:3px; background:ThreeDHighlight;">
+
+<div class="DynamicTree">
+	<div><u><!--{ $lang.tree.title }--></u></div>
+	<div class="wrap" id="tree">
+		<!--{ if $arbol == "" }-->
+		<div class="folder"><a href="tabsJobs.htm" target="Jobs">Tablas DB</a>
+			<!--{ section name=item loop=$clases.items }-->
+			<div class="doc"><a href="tabsJobs.htm?q=<!--{ $clases.queryEncode[item] }-->" target="Jobs">
+			<!--{ $clases.items[item]|replace:'.php':''|replace:'_':' '|capitalize }-->
+			</a></div>
+			<!--{ sectionelse }-->
+			<div class="doc"><a href="#">Clase Uno</a></div>
+			<div class="doc"><a href="#">Clase Dos</a></div>
+			<!--{ /section }-->
+		</div>
+		<!--{ else }-->
+		<!--{ $arbol }-->
+		<!--{ /if }-->
+	</div>
+</div>
+
+<script type="text/javascript">
+var tree = new DynamicTree("tree");
+tree.path = '../REPOSITORY/TreeMenu.class/1.5/images/';
+tree.foldersAsLinks = true;
+tree.init();
+</script>
+
+</body>
+</html>
+<!--{ /strip }-->

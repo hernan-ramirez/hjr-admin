@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>Tab Demo 1</title>
+<style>
+  body { background: white; font-family: Arial; font-size: 11px; margin: 0px }
+  .interna{
+	width:100%;
+	padding:1px 1px 1px 1px;
+	height:100%;
+  }
+</style>
+<link type="text/css" rel="stylesheet" href="webtabs.css">
+<script type="text/javascript" src="webtabs.js"></script>
+<script language=javascript>
+      function f_start() {
+        var Widget = new WebTabs_widget(550, 550, 5, 5, "absolute")
+        Widget.add(new WebTabs_tab("Listado", "page_1", "home.gif"))
+        Widget.add(new WebTabs_tab("Formulario", "page_2", "about.gif"))
+        Widget.add(new WebTabs_tab("Editor", "page_3", "contact.gif"))
+        Widget.add(new WebTabs_tab("Especial", "page_4", "forum.gif"))
+        Widget.add(new WebTabs_tab("Adicional", "page_5", "news.gif"))
+        document.getElementById("WebTabs_container").innerHTML = Widget
+        Widget.f_init_tabs()
+        //Widget.f_move_to(20, 20)
+        //Widget.f_move_by(20, 20)
+        //Widget.f_activate_tab(0)
+      }
+    </script>
+</head>
+<body>
+<div id=WebTabs_container></div>
+<div id=page_1 class="WebTabs-external-page-container">
+  <TABLE class="interna">
+    <tr>
+      <td align="right" height="20">
+	  <IMG src="../../FCKeditor/images/toolbar/office2003/button.find.gif" width="21" height="20" title="Buscar"> 
+	  <IMG src="../../FCKeditor/images/toolbar/office2003/button.open.gif" width="21" height="20" title="Abrir para modificar. Recuerde seleccionar antes un registro"> 
+	  <IMG src="../../FCKeditor/images/toolbar/office2003/button.new.gif" width="21" height="20" title="Nuevo Registro">
+      </td>
+    </tr>
+    <tr>
+      <td><iframe src="../Table.Class/examples/grid/basic.htm" style="border:0; width:100%; height:100%" frameborder="0"> </iframe>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" height="20">
+	<IMG src="../TreeMenu.class/1.5/images/moveLeft.gif" width="20" height="20" title="Página anterior">
+	<IMG src="../TreeMenu.class/1.5/images/moveRight.gif" width="20" height="20" title="Página siguiente">
+	  <IMG src="../../FCKeditor/images/toolbar/office2003/button.copy.gif" width="21" height="20" title="Exportar a un archivo"> 
+	  </td>
+    </tr>
+  </TABLE>
+</div>
+<div id=page_2 class="WebTabs-external-page-container">
+  <TABLE class="interna">
+    <tr>
+      <td align="right" height="20">
+	  <IMG src="../../FCKeditor/images/toolbar/office2003/button.save.gif" width="21" height="20" title="Guardar"> 
+      </td>
+    </tr>
+    <tr>
+      <td><iframe src="../Table.Class/examples/grid/basic1.htm" style="border:0; width:100%; height:100%" frameborder="0"> </iframe>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" height="20">&nbsp;</td>
+    </tr>
+  </TABLE>
+</div>
+<div id=page_3 class=WebTabs-external-page-container>
+  <TABLE class="interna">
+    <tr>
+      <td align="right" height="20">
+	  <IMG src="../../FCKeditor/images/toolbar/office2003/button.save.gif" width="21" height="20" title="Guardar"> 
+      </td>
+    </tr>
+    <tr>
+      <td><iframe src="../../FCKeditor/ejemplo.htm" style="border:0; width:100%; height:100%" frameborder="0"> </iframe>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" height="20">&nbsp;</td>
+    </tr>
+  </TABLE>
+</div>
+<div id=page_4 class=WebTabs-external-page-container> </div>
+<div id=page_5 class=WebTabs-external-page-container> </div>
+<script>f_start()</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>WebTabs Runtime Add/Remove Tab Demo</title>
+    <style>
+      body { background: white; font-family: ms sans serif, tahoma; font-size: 11px; margin: 0px }
+    </style>
+    <link type="text/css" rel="stylesheet" href="webtabs.css">
+    <script type="text/javascript" src="webtabs.js"></script>
+    <script language=javascript>
+      function f_start() {
+        // the default tab to show
+        f_show_tabset(1)
+      }
+      function f_show_tabset(no) {
+        if (no == 1) {
+          document.getElementById('iframe_widget_2').style.visibility = 'hidden'
+          document.getElementById('iframe_widget_1').style.visibility = ''
+        } else if (no == 2) {
+          document.getElementById('iframe_widget_1').style.visibility = 'hidden'
+          document.getElementById('iframe_widget_2').style.visibility = ''
+        }
+      }
+    </script>
+  </head>
+  <body>
+    content before widget
+    <br>
+    <br>
+
+    <div>
+      <iframe id=iframe_widget_1 id=iframe_widget src="a.html" frameborder=no width=270 height=160 style="position: absolute; visibility: hidden; border: 1px solid white"></iframe>
+    </div>
+
+    <div>
+      <iframe id=iframe_widget_2 id=iframe_widget src="b.html" frameborder=no width=270 height=160 style="position: relative; visibility: hidden; border: 1px solid white"></iframe>
+    </div>
+
+    <br>
+    content after widget
+    <br>
+    <br>
+
+    <input type=button value="Tabset 1" style="font-family: ms sans serif, tahoma; font-size: 11px" onclick="f_show_tabset(1)"></button>
+    <input type=button value="Tabset 2" style="font-family: ms sans serif, tahoma; font-size: 11px" onclick="f_show_tabset(2)"></button>
+    <!-- <iframe src="WebTabs_demo_1_dynamic_tabsets_b.html" frameborder=no width=270 height=160 style="border: 1px solid white"></iframe> -->
+
+    <script>f_start()</script>
+  </body>
+</html>

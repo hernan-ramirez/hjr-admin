@@ -1,0 +1,63 @@
+<!--{ strip }-->
+<html>
+<head>
+<title>Job</title>
+<link type="text/css" rel="stylesheet" href="../REPOSITORY/WebTabs.class/webtabs.css">
+<link type="text/css" rel="stylesheet" href="Look/general.css">
+<script type="text/javascript" src="../REPOSITORY/WebTabs.class/webtabs.js"></script>
+<script language=javascript>
+function f_start() {
+
+	var w = document.body.clientWidth-20;
+	var h = document.body.clientHeight-30;
+	if(w <= 50){ w = 50;}
+	if(h <= 50){ h = 50;}
+
+	var Widget = new WebTabs_widget(w, h, 5, 15, "absolute");
+	<!--{ if $smarty.get.action == "new" }-->
+	Widget.add(new WebTabs_tab("<!--{ $lang.tabsJob.new }-->", "page_1", "../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.new.gif"));
+	<!--{ /if }-->
+	<!--{ if $smarty.get.action == "open" }-->
+	Widget.add(new WebTabs_tab("<!--{ $lang.tabsJob.edit }-->", "page_1", "../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.open.gif"));
+	Widget.add(new WebTabs_tab("<!--{ $lang.tabsJob.rel }-->", "page_2", "../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.replace.gif"));
+	Widget.add(new WebTabs_tab("<!--{ $lang.tabsJob.public }-->", "page_3", "../REPOSITORY/FCKeditor.class/editor/images/smiley/msn/thumbs_up.gif"));
+	<!--{ /if }-->
+	document.getElementById("WebTabs_container").innerHTML = Widget;
+	Widget.f_init_tabs();
+}
+</script>
+</head>
+<body onResize="javascript:location.reload();">
+
+<!-- use a fullscreen table to position the widget center-screen -->
+<table class="degrade">
+	<tr>
+	  <td>
+		<!-- use a dummy div emulate content; required for mozilla to space column correctly -->
+		<div style="width: 1px; height: 1px"></div>
+	  </td>
+	  <!-- respecify the width of the widget here to size the center column, as used in the widget declaration -->
+	  <td width=550>
+		<div id=WebTabs_container></div>
+	  </td>
+	  <td>
+		<!-- use a dummy div emulate content; required for mozilla to space column correctly -->
+		<div style="width: 1px; height: 1px"></div>
+	  </td>
+	</tr>
+</table>
+
+<div id=page_1 class="WebTabs-external-page-container">
+	<iframe src="form.htm?q=<!--{ $smarty.get.q }-->" style="border:0; width:100%; height:100%" frameborder="0"> </iframe>
+</div>
+
+<div id=page_2 class="WebTabs-external-page-container">
+</div>
+
+<div id=page_3 class="WebTabs-external-page-container">
+</div>
+
+<script>f_start()</script>
+</body>
+</html>
+<!--{ /strip }-->

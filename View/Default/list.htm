@@ -1,0 +1,206 @@
+<!--{ strip }-->
+<html>
+<head>
+<title>List</title>
+<link href="../REPOSITORY/Table.class/runtime/styles/xp/grid.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="Look/general.css" type="text/css">
+<style>
+.active-column-0 {
+	width:  2px;
+}
+.active-grid-column {
+	BORDER-RIGHT: threedlightshadow 1px solid;
+}
+.active-row-highlight {
+	BACKGROUND-COLOR: #ddeeff !important;
+}
+.active-row-highlight .active-row-cell {
+	BACKGROUND-COLOR: #ddeeff;
+}
+</style>
+<script src="../REPOSITORY/common.js"></script>
+<script src="../REPOSITORY/Table.class/runtime/lib/grid.js"></script>
+
+<!--{ if 1 == 2 }-->
+	<script>
+	var myData = [
+	["MSFT","Microsoft Corporation", "314,571.156", "32,187.000", "55000"],
+	["ORCL", "Oracle Corporation", "hernan<a href=javascript:OpenWin('ampliar.htm?images/prueba.jpg')>.jpg</a>", "9,519.000", "000"],
+	["SAP", "SAP AG (ADR)", "40,986.328", "<INPUT type=checkbox name=checkbox value=1>", "123"],
+	["CA", "Computer Associates Inter", "15,606.335", "3,164.000", "16000"],
+	["ERTS", "Electronic Arts Inc.", "14,490.895", "2,503.727", "4000"],
+	["SFTBF", "Softbank Corp. (ADR)", "14,485.840", ".000", "6865"],
+	["VRTS", "Veritas Software Corp.", "14,444.272", "1,578.658", "5647"],
+	["SYMC", "Symantec Corporation", "9,932.483", "1,482.029", "4300"],
+	["INFY", "Infosys Technologies Ltd.", "9,763.851", "830.748", "15400"],
+	["INTU", "Intuit Inc.", "9,702.477", "1,650.743", "6700"],
+	["ADBE", "Adobe Systems Incorporate", "9,533.050", "1,230.817", "3341"],
+	["PSFT", "PeopleSoft, Inc.", "8,246.467", "1,941.167", "8180"],
+	["SEBL", "Siebel Systems, Inc.", "5,434.649", "1,417.952", "5909"],
+	["BEAS", "BEA Systems, Inc.", "5,111.813", "965.694", "3063"],
+	["SNPS", "Synopsys, Inc.", "4,482.535", "1,169.786", "4254"],
+	["CHKP", "Check Point Software Tech", "4,396.853", "424.769", "1203"],
+	["MERQ", "Mercury Interactive Corp.", "4,325.488", "444.063", "1822"],
+	["DOX", "Amdocs Limited", "4,288.017", "1,427.088", "9400"],
+	["CTXS", "Citrix Systems, Inc.", "3,946.485", "554.222", "1670"],
+	["KNM", "Konami Corporation (ADR)", "3,710.784", ".000", "4313"]
+	];
+	
+	var myColumns = [
+	"Ticker", "Company Name", "Market Cap.", "$ Sales", "id"
+	];
+	</script>
+<!--{ /if }-->
+
+<!--{ if count($datos) > 0 }-->
+<script>
+var misCampos = [
+	<!--{ foreach name=columnas key=nombreCampo item=columna from=$datos[0] }-->
+	"<!--{ $nombreCampo|replace:'id_':''|replace:'_':' '|capitalize }-->"<!--{ if !$smarty.foreach.columnas.last }-->,<!--{ /if }-->
+	<!--{ /foreach }-->
+];
+
+var misDatos = [
+	<!--{ foreach name=filas item=lineas from=$datos }-->
+	[
+		<!--{ foreach name=campos item=valor from=$lineas }-->
+		"<!--{ $valor|truncate:40|escape:'html'|strip }-->"<!--{ if !$smarty.foreach.campos.last }-->,<!--{ /if }-->
+		<!--{ /foreach }-->
+	]<!--{ if !$smarty.foreach.filas.last }-->,<!--{ /if }-->
+	<!--{ /foreach }-->
+];
+
+if(misCampos[0].indexOf("$nombreCampo")==-1){
+	myColumns = misCampos;
+	myData = misDatos;
+}
+
+function borrarSeleccion(){
+	mensaje = "<!--{ $lang.list.confirmDel }-->";
+	mensaje = mensaje.replace('@@@', document.getElementById("itemsCount").value);
+	if(confirm(mensaje)){
+		document.forms[0].submit();
+	}
+}
+
+function abrirRegistro(){
+	parent.location = "tabsJobNewOpen.htm?q=<!--{ $smarty.get.q }-->&action=open&reg=" + document.getElementById("items").value;
+}
+
+</script>
+<!--{ /if }-->
+</head>
+<body>
+<!--{ if count($datos) > 0 }-->
+
+<table class="interna" cellspacing="0">
+<form name="listado" method="post" action="" enctype="multipart/form-data">
+    <tr height="20">
+	  <td class="barral"><span class="titulo">&nbsp;LISTADO</span></td>
+      <td colspan="3" align="right" nowrap class="barral">
+	  <img id="export" src="../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.copy.gif" width="21" height="20" title="<!--{ $lang.list.export }-->" class="botonDeshabilitado">&nbsp;&nbsp;
+	  <img id="update" src="../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.checkbox.gif" width="21" height="20" title="<!--{ $lang.list.update }-->" class="botonDeshabilitado"> 
+	  <img id="open" onClick="javascript:abrirRegistro();" border="0" src="../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.open.gif" width="21" height="20" title="<!--{ $lang.list.open }-->" class="botonDeshabilitado">
+	  <a href="tabsJobNewOpen.htm?q=<!--{ $smarty.get.q }-->&action=new" target="Jobs"><img id="new" border="0" src="../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.new.gif" width="21" height="20" title="<!--{ $lang.list.new }-->"></a>
+      </td>
+    </tr>
+    <tr height="100%">
+      <td colspan="3">
+		<div id="general" style="overflow:hidden; background:ThreeDHighlight; width:100%; height:100%;">
+		<script>
+		var obj = new Active.Controls.Grid;
+		
+		var numRows = "<!--{ $smarty.foreach.filas.total }-->";
+		var numCols = "<!--{ $smarty.foreach.campos.total }-->";
+		
+		if(numRows.length > 4){ numRows = 20; }
+		if(numCols.length > 4){ numCols = 5; }
+		
+		obj.setRowProperty("count", numRows);
+		obj.setColumnProperty("count", numCols);
+		
+		obj.setDataProperty("text", function(i, j){return myData[i][j]});
+		obj.setColumnProperty("text", function(i){return myColumns[i]});
+			
+		obj.setSelectionMultiple(true);
+	
+		var alternate = function(){
+			return (this.getProperty("row/order")%2)?"#fcfaf6":"#ffffff";
+		};
+		
+		var row = new Active.Templates.Row;
+		row.setStyle("background", alternate);
+		row.setEvent("onmouseover", "mouseover(this, 'active-row-highlight')");
+		row.setEvent("onmouseout", "mouseout(this, 'active-row-highlight')");
+		obj.setTemplate("row", row);
+
+		var message = function(){
+		
+			var listaValores = this.getSelectionProperty("values").toString();
+			var str = "";
+
+			if(listaValores.indexOf(",")!=-1){
+				document.getElementById("update").className = "boton";
+				document.getElementById("open").className = "botonDeshabilitado";
+				document.getElementById("delete").className = "boton";
+				var indices = listaValores.split(",");
+				for(i=1; i<=indices.length; i++){
+					str = str + "," + this.getDataProperty("text", indices[i-1], 0); 
+				}		
+				document.getElementById("items").value = str.substr(1, str.length);
+				document.getElementById("itemsCount").value = indices.length;
+			}else{
+				document.getElementById("update").className = "boton";
+				document.getElementById("open").className = "boton";
+				document.getElementById("delete").className = "boton";
+				document.getElementById("items").value = this.getDataProperty("text", listaValores, 0);
+				document.getElementById("itemsCount").value = 1;
+			}
+			
+		};
+	
+		obj.setAction("selectionChanged", message);
+
+		/*
+		obj.setAction( "click", function(src){window.status = src.getItemProperty("text")} );
+		*/
+		document.write(obj);
+		
+		</script>
+		</div>
+		<input id="items" name="items" type="hidden">
+		<input id="itemsCount" type="hidden">
+      </td>
+    </tr>
+    <tr height="20">
+	  <td width="33%" nowrap class="barralInferior">
+		<input type="text" name="pager[range]" value="<!--{ $range }-->" style="width:25px; text-align:center">&nbsp;<!--{ $lang.list.rowsForPage }-->
+		<img src="../REPOSITORY/TreeMenu.class/1.5/images/moveRight.gif" width="20" height="20" title="<!--{ $lang.list.setRange }-->" align="absmiddle" onClick="SelectFirst(document.getElementById('pagina'));document.forms[0].submit();">
+		</td>
+		<td width="33%" nowrap align="center" class="barralInferior">
+		<img src="../REPOSITORY/TreeMenu.class/1.5/images/moveLeft.gif" width="20" height="20" title="<!--{ $lang.list.previous }-->" align="absmiddle" onClick="SelectPrev(document.getElementById('pagina'));document.forms[0].submit();">
+		
+		<select id="pagina" name="pager[page]" onChange="document.forms[0].submit();">
+			<script>
+			var pages = '<!--{ $pages }-->';
+			var page = '<!--{ $smarty.post.pager.page }-->';
+			for( var i = 1 ; i <= pages ; i++ ){
+				if (i == page) { marcar = ' SELECTED'; }else{ marcar = ''; }
+				document.write('<OPTION value=' + i + marcar + '>' + i + '</OPTION>');
+			}
+			</script>
+		</select>
+		
+		<img src="../REPOSITORY/TreeMenu.class/1.5/images/moveRight.gif" width="20" height="20" title="<!--{ $lang.list.next }-->" align="absmiddle" onClick="SelectNext(document.getElementById('pagina'));document.forms[0].submit();">
+	  </td>
+		<td width="33%" align="right" nowrap class="barralInferior">
+		<img id="delete" src="../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.cut.gif" width="21" height="20" title="<!--{ $lang.list.delete }-->" align="absmiddle" onClick="javascript:borrarSeleccion();" class="botonDeshabilitado"> 
+		</td>
+    </tr>
+</form>
+</table>
+
+<!--{ /if }-->
+</body>
+</html>
+<!--{ /strip }-->

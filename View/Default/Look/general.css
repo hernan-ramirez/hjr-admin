@@ -1,0 +1,80 @@
+/* General */
+body {
+	border: 0px;
+	margin: 0px;
+	overflow: hidden;
+	height: 100%;
+}
+body, td, input, select, textarea, div, span, li { 
+	font-family: Arial; 
+	font-size: 11px; 
+}
+
+.MenuPrincipal {
+	height: 15%;
+	width: 100%;
+	
+	padding:3px;
+	border: none;
+	overflow: hidden;
+	background-image:url(FondoMenu.jpg);
+}
+
+.PanelPrincipal {
+	height: 75%;
+	width: 100%;
+
+	padding:7px;
+	border: 3px solid #C8BBB5;
+	background-color:#EBE7E2;
+	overflow: auto;
+}
+
+.MenuAuxialiar {
+	height: 10%;
+	width: 100%;
+
+	padding:3px;
+	border: none;
+	overflow: hidden;
+	background:url(FondoMenuInv.jpg);
+}
+
+.interna{
+	width:100%;
+	height:100%;
+	background: buttonface;
+}
+.degrade{
+	width:100%;
+	height:100%;
+	background: buttonface;
+	filter:	progid:DXImageTransform.Microsoft.Gradient(StartColorStr=#ffD4D0C8, EndColorStr=#ffF2EEE6, GradientType=0);
+color:
+}
+
+.barral{
+	height: 40px;
+	filter:	progid:DXImageTransform.Microsoft.Gradient(StartColorStr=#fffcfcfe, EndColorStr=#ffE6E6E6, GradientType=0);
+}
+
+.barralInferior{
+	height: 25px;
+	filter:	progid:DXImageTransform.Microsoft.Gradient(EndColorStr=#fffcfcfe, StartColorStr=#ffE6E6E6, GradientType=0);
+}
+
+.Titulo {
+	filter: progid:DXImageTransform.Microsoft.Shadow(color=#666666, Direction=135, Strength=3);
+	font-size: 16px;
+	font-weight: bold;
+	color: #FFFFFF;
+	height:1px;
+}
+.Boton {
+	width: 22px;
+	height: 22px;
+	cursor:pointer;
+}
+.BotonDeshabilitado {
+	display:none;
+}

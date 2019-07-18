@@ -1,0 +1,145 @@
+<!--{ strip }-->
+<HTML>
+<HEAD>
+<TITLE>Formulario</TITLE>
+<LINK type="text/css" rel="stylesheet" href="Look/general.css">
+<LINK type="text/css" rel="stylesheet" href="Look/form.css">
+<SCRIPT language="javascript" src="../REPOSITORY/common.js"></SCRIPT>
+<SCRIPT language="javascript" src="../REPOSITORY/form.js"></SCRIPT>
+</HEAD>
+<BODY id="form">
+<FORM id="formulario" name="formulario" method="post" action="" enctype="multipart/form-data">
+  <DIV id="menuPrincipal" class="MenuPrincipal">
+    <DIV id="nombreTabla" class="Titulo"><DEL>Nombre Tabla (id="nombreTabla" class="Titulo")</DEL>
+      <!--{ $campos.sections[0].header|replace:'_':' '|upper }-->
+    </DIV>
+    <DIV id="mensajesGenerales"><DEL>Mensajes Generales (id="mensajesGenerales")</DEL></DIV>
+    <DIV id="errores"><DEL>Errores con descripción (id="errores")</DEL>
+      <!--{ $lang.form.error }-->
+    </DIV>
+    <UL id="botonesPrincipales" class="Botones">
+      <DEL>Botones Principales (id="botonesPrincipales" class="Botones")</DEL>
+      <LI id="botonSearch" class="Boton" title="<!--{ $lang.form.search }-->" onClick="javascript:f_activate_tab(0);">
+        <!--{ $lang.form.search }-->
+        <DEL>Botón de Buscar (id="botonSearch" class="Boton")</DEL> </LI>
+      <LI id="botonBack" class="Boton" title="<!--{ $lang.form.back }-->"> <A href="tabsJobs.htm?q=<!--{ $smarty.get.q }-->" target="Jobs">
+        <!--{ $lang.form.back }-->
+        <DEL>Botón de volver a la Lista (id="botonBack" class="Boton")</DEL> </A></LI>
+      <LI id="botonSave" class="Boton" title="<!--{ $lang.form.save }-->" onClick="javascript:document.formulario.submit();">
+        <!--{ $lang.form.save }-->
+        <DEL>Botón de Guardar (id="botonSave" class="Boton")</DEL> </LI>
+    </UL>
+  </DIV>
+  <DIV id="panelFormulario" class="PanelPrincipal">
+    <!--{ section name=formulario loop=$campos.sections[0].elements }-->
+    <DIV class="MarcoCampo"><DEL>Marco del Campo (class="MarcoCampo")</DEL>
+      <!--{ if $campos.sections[0].elements[formulario].required == 1 }-->
+      <DIV class="Obligatorio">(*)<DEL>Campo Obligatorio (class="Obligatorio")</DEL></DIV>
+      <!--{ /if }-->
+      <DIV class="NombreCampo"><DEL>Nombre Campo (class="NombreCampo")</DEL>
+        <!--{ $campos.sections[0].elements[formulario].label|replace:'Id_':''|replace:'_':' '|capitalize }-->
+      </DIV>
+      <DIV class="Error"><DEL>Error del Campo (class="Error")</DEL>
+        <!--{ $campos.sections[0].elements[formulario].error }-->
+      </DIV>
+      <DIV class="Campo"><DEL>Campo (class="Campo")</DEL>
+        <!--{ if $campos.sections[0].elements[formulario].type == "text" }-->
+        <DIV class="CampoTexto"><DEL>Campo de Texto (class="CampoTexto")</DEL>
+          <UL>
+            <LI id="botonTextoLargo" class="Boton" title="<!--{ $lang.form.zoom }-->">
+              <!--{ $lang.form.zoom }-->
+              <DEL>Ampliar a texto largo (id="botonTextoLargo" class="Boton")</DEL> </LI>
+          </UL>
+          <INPUT type="text" name="<!--{ $campos.sections[0].elements[formulario].name }-->" value="<!--{ $campos.sections[0].elements[formulario].value }-->">
+        </DIV>
+        <!--{ /if }-->
+        <!--{ if $campos.sections[0].elements[formulario].type == "textarea" }-->
+        <DIV class="CampoTextoLargo"><DEL>Campo de Texto Largo (class="CampoTextoLargo")</DEL>
+          <UL>
+            <LI id="botonTextoLinea" class="Boton" title="<!--{ $lang.form.compact }-->">
+              <!--{ $lang.form.compact }-->
+              <DEL>Compactar a una línea (id="botonTextoLinea" class="Boton")</DEL> </LI>
+            <LI id="botonLimpiarCampo" class="Boton" title="<!--{ $lang.form.delField }-->">
+              <!--{ $lang.form.delField }-->
+              <DEL>Borrar contenido del campo (id="botonLimpiarCampo" class="Boton")</DEL> </LI>
+          </UL>
+          <TEXTAREA name="<!--{ $campos.sections[0].elements[formulario].name }-->">
+		  <!--{ $campos.sections[0].elements[formulario].value }-->
+		  </TEXTAREA>
+        </DIV>
+        <!--{ /if }-->
+        <!--{ if $campos.sections[0].elements[formulario].type == "select" }-->
+        <DIV class="CampoCombo"><DEL>Campo combo de selección (class="CampoCombo")</DEL>
+          <UL>
+            <LI id="botonNuevoRegistro" class="Boton" onClick="javascript:PopUp('form.htm?object=<!--{ $campos.sections[0].elements[formulario].name }-->', 450, 550);" title="<!--{ $lang.form.new }-->">
+              <!--{ $lang.form.new }--><DEL>Nuevo Registro (id="botonNuevoRegistro" class="Boton")</DEL>
+            </LI>
+            <LI id="botonSeleccionarRegistro" class="Boton" onClick="javascript:PopUp('tabsJobs.htm?object=<!--{ $campos.sections[0].elements[formulario].name }-->', 450, 550);" title="<!--{ $lang.form.select }-->">
+              <!--{ $lang.form.select }--><DEL>Seleccionar Registros (id="botonSeleccionarRegistro" class="Boton")</DEL>
+            </LI>
+            <LI id="botonMultiplesLineas" class="Boton" onClick="javascript:comboMultiple('<!--{ $campos.sections[0].elements[formulario].name }-->');" title="<!--{ $lang.form.multiple }-->">
+              <!--{ $lang.form.multiple }--><DEL>Multiples Lineas (id="botonMultiplesLineas" class="Boton")</DEL>
+            </LI>
+          </UL>
+          <!--{ $campos.sections[0].elements[formulario].html|replace:'name':' class="comboSel" name'|strip }-->
+          <DEL>
+          <SELECT class="comboSel" tabindex="-1">
+            <SCRIPT>c="#FFFFFF";for(m=1;m<=40;m++){if(c=="#FFFFFF"){c="#fcfaf6";}else{c="#FFFFFF";};document.write("<OPTION value="+m+" style='background-color:"+c+"'>Opción Número: "+m+"</OPTION>");}</SCRIPT>
+          </SELECT>
+          </DEL> </DIV>
+        <!--{ /if }-->
+        <!--{ if $campos.sections[0].elements[formulario].type == "date" }-->
+        <DIV class="CampoFecha">
+          <UL>
+            <LI id="botonSeleccionarFecha" class="Boton" title="<!--{ $lang.form.multiple }-->">
+              <!--{ $lang.form.multiple }--><DEL>Seleccionar Fecha (id="botonSeleccionarFecha" class="Boton")</DEL>
+            </LI>
+            <LI id="botonLimpiarFecha" class="Boton" title="<!--{ $lang.form.delField }-->">
+              <!--{ $lang.form.delField }--><DEL>Limpiar Fecha (id="botonLimpiarFecha" class="Boton")</DEL>
+            </LI>
+          </UL>
+          <DIV id="diaDiv" class="FechaDiv">
+            <SELECT name="Dia">
+              <OPTION value="">&nbsp;</OPTION>
+              <SCRIPT>for(d=1;d<=31;d++){document.write("<OPTION value="+d+">"+d+"</OPTION>");}</SCRIPT>
+            </SELECT>
+          </DIV>
+          /
+          <DIV id="mesDiv" class="FechaDiv">
+            <SELECT name="Mes">
+              <OPTION value="">&nbsp;</OPTION>
+              <SCRIPT>for(m=1;m<=12;m++){document.write("<OPTION value="+m+">"+m+"</OPTION>");}</SCRIPT>
+            </SELECT>
+          </DIV>
+          /
+          <DIV id="anioDiv" class="FechaDiv">
+            <SELECT name="Anio">
+              <OPTION value="">&nbsp;</OPTION>
+              <SCRIPT>var fecha = new Date();anio=fecha.getYear();for(a=anio-20;a>=anio-100;a--){document.write("<OPTION value="+a+">"+a+"</OPTION>");}</SCRIPT>
+            </SELECT>
+          </DIV>
+        </DIV>
+        <!--{ /if }-->
+        <!--{ if $campos.sections[0].elements[formulario].type == "file" }-->
+        <INPUT type="file" name="<!--{ $campos.sections[0].elements[formulario].name }-->">
+        <!--{ /if }-->
+        <!--{ if $campos.sections[0].elements[formulario].type == "checkbox" }-->
+        <INPUT type="checkbox" name="<!--{ $campos.sections[0].elements[formulario].name }-->">
+        <!--{ /if }-->
+      </DIV>
+    </DIV>
+    <!--{ /section }-->
+  </DIV>
+  <DIV id="menuAuxialiar" class="MenuAuxialiar">
+    <DIV id="botonesAuxiliares" class="Botones"><DEL>Botones Auxiliares (id="botonesAuxiliares" class="Botones")</DEL>
+      <UL>
+        <LI id="botonEraseForm" class="Boton" title="<!--{ $lang.form.eraseForm }-->" onClick="javascript:window.frames['formulario'].document.forms[0].reset();">
+          <!--{ $lang.form.eraseForm }--><DEL>Limpiar Formulario (id="botonEraseForm" class="Boton")</DEL> 
+		</LI>
+      </UL>
+    </DIV>
+  </DIV>
+</FORM>
+</BODY>
+</HTML>
+<!--{ /strip }-->

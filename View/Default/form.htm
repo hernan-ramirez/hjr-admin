@@ -1,0 +1,158 @@
+<!--{ strip }-->
+<html>
+<head>
+<link type="text/css" rel="stylesheet" href="Look/general.css">
+<STYLE>
+	table{width:100%;}
+	.error{color:#FF0033;font-weight:bold;}
+	.obligatorio{color:#FF6633;font-weight:bold;}
+	.tablaCampo{border:2px inset #FFFFFF;background-color:#FFFFFF;}
+		.comboDiv{overflow:hidden;width:100%;height:16px;border:0px;}
+		.comboSel{position:relative;left:-2px;top:-2px;width:101%;}
+		.comboDivMulti{overflow:hidden;width:100%;height:98px;border:0px;}
+		.comboSelMulti{position:relative; left:-3; top:-3; width:101%; height:117%;}
+	.fechaDiv{overflow:hidden;width:18px;height:16px;}
+	.fechaSel{position:relative;left:-2px; top:-2px; width:38px;}
+
+</STYLE>
+<SCRIPT language="javascript" src="../REPOSITORY/common.js"></SCRIPT>
+<SCRIPT>
+function comboMultiple(campo){
+	if(campo.indexOf('<!-') == -1){
+		var comboTD = eval("document.getElementById('comboTD" + campo + "')");
+		var comboDiv = eval("document.getElementById('comboDiv" + campo + "')");
+		var comboSel = eval("document.forms[0]." + campo );
+	}else{
+		var comboTD = document.getElementById('comboTD<!--{ $campos.sections[0].elements[formulario].name }-->');
+		var comboDiv = document.getElementById('comboDiv<!--{ $campos.sections[0].elements[formulario].name }-->');
+		var comboSel = document.getElementById('comboSel');
+	}
+	
+	if(comboTD.noWrap == true){comboTD.noWrap = false;}else{comboTD.noWrap = true;}
+	if(comboDiv.className == "comboDiv"){comboDiv.className = "comboDivMulti";}else{comboDiv.className = "comboDiv";}
+	if(comboSel.className == "comboSel"){comboSel.className = "comboSelMulti";}else{comboSel.className = "comboSel";}
+	if(comboSel.multiple == true){comboSel.multiple = false;}else{comboSel.multiple = true;}
+
+	var color = "#ffffff";
+	for(i=1; i<comboSel.length; i++){
+		if(color == "#fcfaf6"){	color = "#ffffff"; }else{ color = "#fcfaf6"; }
+		comboSel.options[i].style.backgroundColor = color;
+	}
+}
+</SCRIPT>
+</head>
+
+
+<body>
+<TABLE class="interna" cellspacing="0" cellpadding="0">
+<FORM name="formulario" method="post" action="" enctype="multipart/form-data">
+<tr>
+<td width="100%" class="barral"><SPAN class="titulo">&nbsp;<!--{ $campos.sections[0].header|replace:'_':' '|upper }--></SPAN>
+<!--{ if count($campos.errors) >= 1 }-->&nbsp;<FONT color="#FF6600"><B><!--{ $lang.form.error }--></B></FONT><!--{ /if }-->
+</td>
+<td align="right" nowrap class="barral">
+<IMG onClick="javascript:f_activate_tab(0);" src="../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.find.gif" width="21" height="20" title="<!--{ $lang.form.search }-->"> 
+<A href="tabsJobs.htm?q=<!--{ $smarty.get.q }-->" target="Jobs"><IMG border="0" src="../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.showtableborders.gif" width="21" height="20" title="<!--{ $lang.form.back }-->"></A> 
+<IMG onClick="javascript:document.formulario.submit();" src="../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.save.gif" width="21" height="20" title="<!--{ $lang.form.save }-->"> 
+</td>
+</tr>
+<tr>
+<td colspan="2" bgcolor="#EBE7E2">
+<DIV style="overflow:auto; width:100%; height:100%; padding:5px,5px,5px,5px; border:2px solid buttonface">
+<!--{ section name=formulario loop=$campos.sections[0].elements }-->
+
+	<BR><!--{ if $campos.sections[0].elements[formulario].required == 1 }--><SPAN class="obligatorio">(*)&nbsp;</SPAN><!--{ /if }-->
+	<!--{ $campos.sections[0].elements[formulario].label|replace:'Id_':''|replace:'_':' '|capitalize }-->&nbsp;
+	<SPAN class="error"><!--{ $campos.sections[0].elements[formulario].error }--></SPAN>
+
+
+<!--{ if $campos.sections[0].elements[formulario].type == "text" }-->
+	<table class="tablaCampo" cellpadding="0" cellspacing="0">
+	  <tr>
+		<td><IMG hspace="1" vspace="1" src="../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.textarea.gif" title="<!--{ $lang.form.zoom }-->"></td>
+		<td width="100%"><INPUT name="<!--{ $campos.sections[0].elements[formulario].name }-->" type="text" style="width:100%; border:0px;" value="<!--{ $campos.sections[0].elements[formulario].value }-->"></td>
+	  </tr>
+	</table><BR>
+<!--{ /if }-->
+
+  
+<!--{ if $campos.sections[0].elements[formulario].type == "textarea" }-->
+	<table class="tablaCampo" cellpadding="0" cellspacing="0">
+		<tr>
+		  <td align="center" valign="top"><IMG src="../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.input.gif" width="21" height="20" title="<!--{ $lang.form.compact }-->"> <IMG hspace="1" vspace="1" src="../REPOSITORY/ImgCommon/cruz.gif" title="<!--{ $lang.form.delField }-->"></td>
+		  <td width="100%"><TEXTAREA name="<!--{ $campos.sections[0].elements[formulario].name }-->" rows="9" style="width:100%; border:0px;"><!--{ $campos.sections[0].elements[formulario].value }--></TEXTAREA></td>
+		</tr>
+	</table><BR>
+<!--{ /if }-->
+
+
+<!--{ if $campos.sections[0].elements[formulario].type == "select" }-->
+	<table class="tablaCampo" cellpadding="0" cellspacing="0">
+	<tr>
+	  <td id="comboTD<!--{ $campos.sections[0].elements[formulario].name }-->" align="center" valign="top" nowrap>
+	  <IMG onClick="javascript:PopUp('form.htm?object=<!--{ $campos.sections[0].elements[formulario].name }-->', 450, 550);" src="../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.new.gif" width="21" height="15" title="<!--{ $lang.form.new }-->"> 
+	  <IMG onClick="javascript:PopUp('tabsJobs.htm?object=<!--{ $campos.sections[0].elements[formulario].name }-->', 450, 550);" src="../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.universalkey.gif" width="21" height="15" title="<!--{ $lang.form.select }-->"> 
+	  <IMG onClick="javascript:comboMultiple('<!--{ $campos.sections[0].elements[formulario].name }-->');" src="../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.select.gif" width="21" height="15" title="<!--{ $lang.form.multiple }-->">
+	  <td width="100%"><DIV id="comboDiv<!--{ $campos.sections[0].elements[formulario].name }-->" class="comboDiv">
+	  	<!--{ $campos.sections[0].elements[formulario].html|replace:'name':' class="comboSel" name'|strip }-->
+		  <SELECT id="comboSel" class="comboSel" tabindex="-1">
+			<SCRIPT>c="#FFFFFF";for(m=1;m<=40;m++){if(c=="#FFFFFF"){c="#fcfaf6";}else{c="#FFFFFF";};document.write("<OPTION value="+m+" style='background-color:"+c+"'>Opción Número: "+m+"</OPTION>");}</SCRIPT>
+		  </SELECT>
+		</DIV></td>
+	</tr>
+	</table><BR>
+<!--{ /if }-->
+
+
+<!--{ if $campos.sections[0].elements[formulario].type == "date" }-->
+<table class="tablaCampo" cellpadding="0" cellspacing="0" style="width:130px;">
+  <tr>
+	<td nowrap><IMG src="../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.select.gif" width="21" height="16" title="<!--{ $lang.form.multiple }-->"><IMG hspace="1" vspace="1" src="../REPOSITORY/ImgCommon/cruz.gif" title="<!--{ $lang.form.delField }-->"></td>
+	<td><DIV class="fechaDiv">
+		<SELECT name="Dia" class="fechaSel">
+		  <OPTION value="">&nbsp;</OPTION>
+		  <SCRIPT>for(d=1;d<=31;d++){document.write("<OPTION value="+d+">"+d+"</OPTION>");}</SCRIPT>
+		</SELECT>
+	  </DIV></td>
+	<td> / </td>
+	<td><DIV class="fechaDiv">
+		<SELECT name="Mes" class="fechaSel">
+		  <OPTION value="">&nbsp;</OPTION>
+		  <SCRIPT>for(m=1;m<=12;m++){document.write("<OPTION value="+m+">"+m+"</OPTION>");}</SCRIPT>
+		</SELECT>
+	  </DIV></td>
+	<td> / </td>
+	<td><DIV class="fechaDiv" style="width:30;">
+		<SELECT name="Anio" class="fechaSel" style="width:50;">
+		  <OPTION value="">&nbsp;</OPTION>
+		  <SCRIPT>var fecha = new Date();anio=fecha.getYear();for(a=anio-20;a>=anio-100;a--){document.write("<OPTION value="+a+">"+a+"</OPTION>");}</SCRIPT>
+		</SELECT>
+	  </DIV></td>
+  </tr>
+</table><BR>
+<!--{ /if }-->
+
+
+<!--{ if $campos.sections[0].elements[formulario].type == "file" }-->
+	<INPUT type="file" name="<!--{ $campos.sections[0].elements[formulario].name }-->" style="width:100%;"><BR>
+<!--{ /if }-->
+
+<!--{ if $campos.sections[0].elements[formulario].type == "checkbox" }-->
+	<INPUT type="checkbox" name="<!--{ $campos.sections[0].elements[formulario].name }-->"><BR>
+<!--{ /if }-->
+
+
+<!--{ /section }-->
+</DIV>
+</td>
+</tr>
+<tr>
+<td align="right" height="20" nowrap colspan="2" class="barralInferior">
+<IMG onClick="javascript:window.frames['formulario'].document.forms[0].reset();" src="../REPOSITORY/FCKeditor.class/editor/skins/office2003/toolbar/button.removeformat.gif" title="<!--{ $lang.form.eraseForm}-->">
+</td>
+</tr>
+</FORM>
+</TABLE>
+</body>
+</html>
+<!--{ /strip }-->

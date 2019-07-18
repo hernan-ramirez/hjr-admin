@@ -1,0 +1,3 @@
+<?php /* Smarty version 2.6.6, created on 2006-02-16 12:02:59
+         compiled from Default/indexFrame.htm */ ?>
+<HTML><HEAD><link type="text/css" rel="stylesheet" href="View/Default/Look/general.css"><TITLE>CMS.2005</TITLE></HEAD><FRAMESET id="principal" cols="35%,*" frameborder="NO" border="0" framespacing="0"><FRAME src="tabsMenu.php" name="Menu" style="background: buttonface;" scrolling="no"><FRAME src="blank.php"    name="Jobs" style="background: buttonface;" scrolling="no"></FRAMESET><NOFRAMES style="background: buttonface;"><BODY>Su navegador no acepta frames</BODY></NOFRAMES></HTML>

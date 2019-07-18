@@ -1,0 +1,58 @@
+;
+; Cambie de aquí cualquier mensaje visual.
+; Se llama al valor desde Smarty, ejemplo: <!--{ $lang.tabsJob.list }-->
+;
+
+
+[tabsJob]
+list = Listado
+search = Buscar y ordenar
+new = Nuevo
+edit = Editar
+rel = Relacionar
+public = Publicar
+
+
+[tabsMenu]
+admin = Admin
+site = Portal
+;
+refresh = Refrescar
+home = Inicio
+fontSize = Tamaño de letra
+user = Usuario actual:
+exit = Salir
+scaleMenu = "Reescalar u ocultar menu (Arrastrar o doble click)"
+;
+
+
+[list]
+new = Nuevo registro
+open = Abrir para modificar. Recuerde seleccionar antes un registro
+delete = Eliminar registros seleccionados
+confirmDel = Esta por borrar @@@ registro/s permanentemente.\n¿Estas seguro de realizar esto?
+update = Actualizar chequeados
+export = Exportar a un archivo
+noRows = No hay registros para mostrar
+rowsForPage = Registros por páginas
+next = Página siguiente
+previous = Página anterior
+setRange = Establecer rango
+
+
+[form]
+search = Buscar
+back = Volver al listado
+save = Guardar
+zoom = Ampliar a texto largo
+multiple = Desplegar a multiples líneas
+select = Seleccionar desde los detalles de registros
+new = Nuevo registro
+compact = Compactar a una línea
+erase = Borrar campo
+eraseForm = Borrar formulario
+error = Hay algún error de entrada en el formulario
+delField = Borrar contenido del campo
+
+[tree]
+title = Arbol de contenidos

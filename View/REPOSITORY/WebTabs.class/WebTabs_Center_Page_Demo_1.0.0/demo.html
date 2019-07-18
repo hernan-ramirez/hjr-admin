@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <title>WebTabs Center Page Demo</title>
+    <style>
+      /* body { background: white; font-family: ms sans serif, tahoma; font-size: 11px; margin: 0px } */
+      /* use hidden overflow setting to hide scrollbars */
+      body { background: white; font-family: ms sans serif, tahoma; font-size: 11px; margin: 0px; overflow: hidden }
+    </style>
+    <link type="text/css" rel="stylesheet" href="webtabs.css">
+    <script type="text/javascript" src="webtabs.js"></script>
+    <script language=javascript>
+      function f_start() {
+        // use relative positioning
+        var Widget = new WebTabs_widget(250, 140, 0, 0, "relative")
+        Widget.add(new WebTabs_tab("Home", "page_1", "home.gif"))
+        Widget.add(new WebTabs_tab("About Us", "page_2", "about.gif"))
+        Widget.add(new WebTabs_tab("Contact", "page_3", "contact.gif"))
+        Widget.add(new WebTabs_tab("Forum", "page_4", "forum.gif"))
+        Widget.add(new WebTabs_tab("News", "page_5", "news.gif"))
+        document.getElementById("WebTabs_container").innerHTML = Widget
+        Widget.f_init_tabs()
+        //Widget.f_move_to(20, 20)
+        //Widget.f_move_by(20, 20)
+        //Widget.f_activate_tab(0)
+      }
+    </script>
+  </head>
+  <body>
+<!--
+    <div style="position: relative">
+      content before widget
+    </div>
+-->
+
+    <!-- use a fullscreen table to position the widget center-screen -->
+    <table width=100% height=100% cellpadding=0 cellspacing=0 border=0>
+      <tbody>
+        <tr>
+          <td colspan=3>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!-- use a dummy div emulate content; required for mozilla to space column correctly -->
+            <div style="width: 1px; height: 1px"></div>
+          </td>
+          <!-- respecify the width of the widget here to size the center column, as used in the widget declaration -->
+          <td width=250 height=140>
+            <div id=WebTabs_container></div>
+          </td>
+          <td>
+            <!-- use a dummy div emulate content; required for mozilla to space column correctly -->
+            <div style="width: 1px; height: 1px"></div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan=3>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+<!--
+    <div style="position: relative">
+      content after widget
+    </div>
+-->
+
+    <div id=page_1 class=WebTabs-external-page-container>
+      <div class=WebTabs-internal-page-container>
+        My page 1
+      </div>
+    </div>
+
+    <div id=page_2 class=WebTabs-external-page-container>
+      <div class=WebTabs-internal-page-container>
+        My page 2
+      </div>
+    </div>
+
+    <div id=page_3 class=WebTabs-external-page-container>
+      <div class=WebTabs-internal-page-container>
+        My page 3
+      </div>
+    </div>
+
+    <div id=page_4 class=WebTabs-external-page-container>
+      <div class=WebTabs-internal-page-container>
+        My page 4
+      </div>
+    </div>
+
+    <div id=page_5 class=WebTabs-external-page-container>
+      <div class=WebTabs-internal-page-container>
+        My page 5
+      </div>
+    </div>
+
+    <script>f_start()</script>
+  </body>
+</html>
